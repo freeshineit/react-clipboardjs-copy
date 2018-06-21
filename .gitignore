@@ -1,5 +1,7 @@
 # dependencies
 /node_modules
+.cache
+dist
 
 # testing
 /coverage
