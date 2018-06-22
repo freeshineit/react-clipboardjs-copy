@@ -1,5 +1,3 @@
 import ReactClipboard from './Component';
 
-export {
-    ReactClipboard
-}
+export default ReactClipboard;

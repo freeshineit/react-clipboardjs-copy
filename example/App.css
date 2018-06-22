@@ -1,0 +1,14 @@
+
+.App {
+  width: 800px;
+  margin: 100px auto;
+}
+
+.app-item {
+  margin-bottom: 30px;
+}
+
+.app-item-desc {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
