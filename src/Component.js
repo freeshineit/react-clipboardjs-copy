@@ -16,7 +16,7 @@ class ReactClipboard extends React.Component {
         this.clipboard && this.clipboard.destroy();
         this.clipboard = new Clipboard(e.target);
         this.clipboard.on('success', function (e) {
-            selection && e.clearSelection(); // 是否清除选中
+            !selection && e.clearSelection(); // 是否清除选中
             onSuccess && onSuccess(e);
         });
         this.clipboard.on('error', function (e) {
@@ -48,7 +48,8 @@ class ReactClipboard extends React.Component {
 }
 
 ReactClipboard.defaultProps = {
-    action: 'copy'
+    action: 'copy',
+    selection: true
 }
 
 ReactClipboard.propTypes = {
@@ -57,7 +58,7 @@ ReactClipboard.propTypes = {
     text: PropTypes.string, //  操作的文本
     onSuccess: PropTypes.func, // 操作成功回调
     onError: PropTypes.func, // 操作失败回调
-    selection: PropTypes.bool // 是否选择 默认是选中的  如不需要选中 设置为true
+    selection: PropTypes.bool // 是否选择 默认是选中的  如不需要选中 设置为false
 }
 
 export default ReactClipboard;
