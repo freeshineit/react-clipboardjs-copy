@@ -1,16 +1,14 @@
 # react-clipboardjs-copy
 
-A react copy component that based on `clipboard.js`
+一个基于`clipboard.js`的React辅助组件
 
-[中文](./README_zh-CN.md)
-
-## Installing
+## 安装
 
 ```sh
 npm install --save react-clipboardjs-copy
 ```
 
-## Basic usage
+## 基本使用
 
 ```jsx
 import React from 'react';
@@ -34,22 +32,33 @@ export default class App extends React.Component {
 }
 ```
 
-## Options(props)
+```jsx
+<ReactClipboard
+    target={'.copy-target'}
+    selection={true}
+    onSuccess={(e) => console.log(e)}
+    onError={(e) => console.log(e)}
+>
+    <button>Copy</button>
+</ReactClipboard>
+```
 
-+   `text` - *string* React component will copy content. Corresponding to `clipboard.js` attribut `data-clipboard-text`.
+## 配置
 
-+   `target` - *string* React component will copy target element content. Corresponding to `clipboard.js` attribut `data-clipboard-target`.
++   `text` - *string* React组件要复制的内容，其对应 `clipboard.js` 的 `data-clipboard-text`属性。
 
-+   `action` - *string* React component action. Corresponding to `clipboard.js` attribut `data-clipboard-action`. But only support copy(default: 'copy').
++   `target` - *string* React组件要复制的目标元素. 其对应 `clipboard.js` 的 `data-clipboard-target`属性。
 
-+   `selection` - *boolean*  Setting whether to clear the copy selected. Corresponding to `clipboard.js` event `e.clearSelection()`. (default: true)
++   `action` - *string*  React组件的行为. 其对应 `clipboard.js` 的 `data-clipboard-action`属性。但是目前只支持复制(默认: 'copy')。
 
-+   `onSuccess` - *function* Copy success callback.
++   `selection` - *boolean*  设置是否清除复制的选中. 其对应 `clipboard.js` 的事件 `e.clearSelection()`. (默认: true，不清除)
 
-+   `onError` - *function* Copy error callback.
++   `onSuccess` - *function* 复制成功回调.
+
++   `onError` - *function* 复制出错回调.
 
 
-## Developing
+## 开发
 
 ```sh
 git clone git@github.com:freeshineit/react-clipboardjs-copy.git
