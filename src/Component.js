@@ -6,23 +6,23 @@ class ReactClipboard extends React.Component {
     constructor(props) {
         super(props);
         this.clipboard = null;
-        this.uuid = 0;
-        this.clipboardBtn = null;
     }
 
     onClick(e) {
         const { onSuccess, onError, selection } = this.props;
 
-        this.clipboard && this.clipboard.destroy();
-        this.clipboard = new Clipboard(e.target);
-        this.clipboard.on('success', function (e) {
-            !selection && e.clearSelection(); // 是否清除选中
-            onSuccess && onSuccess(e);
-        });
-        this.clipboard.on('error', function (e) {
-            onError && onError(e);
-        });
-        this.clipboard.onClick(e)
+        if (!this.clipboard) {
+            this.clipboard = new Clipboard(e.target);
+            this.clipboard.on('success', function (e) {
+                !selection && e.clearSelection(); // 是否清除选中
+                onSuccess && onSuccess(e);
+            });
+            this.clipboard.on('error', function (e) {
+                onError && onError(e);
+            });
+
+            this.clipboard.onClick(e)
+        }
     }
 
     componentWillMount() {
@@ -42,7 +42,6 @@ class ReactClipboard extends React.Component {
                 'data-clipboard-text': text,
                 'data-clipboard-target': target,
                 'onClick': this.onClick.bind(this),
-                ref: (ele) => { this.clipboardBtn = ele }
             });
     }
 }

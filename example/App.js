@@ -2,6 +2,8 @@ import React from 'react';
 import ReactClipboard from '../src';
 import './App.css';
 export default class App extends React.Component {
+
+    button = null;
     
     render () {
 
@@ -32,6 +34,14 @@ export default class App extends React.Component {
                         onError={(e) => console.log(e)}
                     >
                         <button>Copy</button>
+                    </ReactClipboard>
+                </section>
+                <section className="app-item">
+                    <div className="app-item-desc">copy text</div>
+                    <ReactClipboard text='copy text'
+                        onSuccess={(e) => { console.log(this.button); console.log(e)}}
+                        onError={(e) => console.log(e)}>
+                        <button ref={(node => this.button = node)}>Copy</button>
                     </ReactClipboard>
                 </section>
             </div>
