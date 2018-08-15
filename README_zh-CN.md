@@ -2,6 +2,9 @@
 
 一个基于`clipboard.js`的React辅助组件
 
+[English](./README.md)
+
+
 ## 安装
 
 ```sh
@@ -26,6 +29,44 @@ export default class App extends React.Component {
                         <button>Copy</button>
                     </ReactClipboard>
                 </section>
+                                <section className="app-item">
+                    <div className="app-item-desc">copy element attr value: aria-label='this is an element attr aria-label'</div>
+                    <ReactClipboard options= {{
+                        text: function(trigger) {
+                            return trigger.getAttribute('aria-label');
+                        }
+                    }}
+                    aria-label='this is an element attr aria-label'
+                    >
+                        <button>Copy</button>
+                    </ReactClipboard>
+                </section>
+
+                <section className="app-item">
+                    <div className="app-item-desc">changes the focus you'll want to set the focused element as the container value</div>
+                    <ReactClipboard options= {{
+                        container: document.getElementById('modal')
+                    }}
+                    >
+                        <button>Copy</button>
+                    </ReactClipboard>
+                </section>
+
+                <section className="app-item">
+                    <div className="app-item-desc">
+                        <div></div>
+                        <div id='dynamically_id'>this is a dynamically target element, click copy button</div>
+                    </div>
+                    <ReactClipboard options= {{
+                        target: function(trigger) {
+                            return document.getElementById('dynamically_id');
+                        }
+                    }}
+                    >
+                        <button>Copy</button>
+                    </ReactClipboard>
+                </section>
+
             </div>
         )
     }
@@ -56,6 +97,13 @@ export default class App extends React.Component {
 +   `onSuccess` - *function* 复制成功回调.
 
 +   `onError` - *function* 复制出错回调.
+
++   `options` - *object* 复制对象参数，其值包括{text, target, container}.
+
+
+## 参考资料
+
+[clipboard.js](https://clipboardjs.com/)
 
 
 ## 开发

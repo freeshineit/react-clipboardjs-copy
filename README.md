@@ -28,10 +28,58 @@ export default class App extends React.Component {
                         <button>Copy</button>
                     </ReactClipboard>
                 </section>
+                <section className="app-item">
+                    <div className="app-item-desc">copy element attr value: aria-label='this is an element attr aria-label'</div>
+                    <ReactClipboard options= {{
+                        text: function(trigger) {
+                            return trigger.getAttribute('aria-label');
+                        }
+                    }}
+                    aria-label='this is an element attr aria-label'
+                    >
+                        <button>Copy</button>
+                    </ReactClipboard>
+                </section>
+
+                <section className="app-item">
+                    <div className="app-item-desc">changes the focus you'll want to set the focused element as the container value</div>
+                    <ReactClipboard options= {{
+                        container: document.getElementById('modal')
+                    }}
+                    >
+                        <button>Copy</button>
+                    </ReactClipboard>
+                </section>
+
+                <section className="app-item">
+                    <div className="app-item-desc">
+                        <div></div>
+                        <div id='dynamically_id'>this is a dynamically target element, click copy button</div>
+                    </div>
+                    <ReactClipboard options= {{
+                        target: function(trigger) {
+                            return document.getElementById('dynamically_id');
+                        }
+                    }}
+                    >
+                        <button>Copy</button>
+                    </ReactClipboard>
+                </section>
             </div>
         )
     }
 }
+```
+
+```jsx
+<ReactClipboard
+    target={'.copy-target'}
+    selection={true}
+    onSuccess={(e) => console.log(e)}
+    onError={(e) => console.log(e)}
+>
+    <button>Copy</button>
+</ReactClipboard>
 ```
 
 ## Options(props)
@@ -48,6 +96,10 @@ export default class App extends React.Component {
 
 +   `onError` - *function* Copy error callback.
 
++   `options` - *object* Copy object options, value {text, target, container}.
+
+
+
 
 ## Developing
 
@@ -60,6 +112,10 @@ npm install
 
 npm run dev
 ```
+
+## reference material
+
+[clipboard.js](https://clipboardjs.com/)
 
 ## License
 
