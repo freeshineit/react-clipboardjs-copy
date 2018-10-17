@@ -1,6 +1,6 @@
 # react-clipboardjs-copy
 
-一个基于`clipboard.js`的React辅助组件
+一个基于`clipboard.js`的React复制组件
 
 [English](./README.md)
 
