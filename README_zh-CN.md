@@ -15,7 +15,7 @@ npm install --save react-clipboardjs-copy
 
 ```jsx
 import React from 'react';
-import {ReactClipboard} from 'react-clipboardjs-copy'
+import ReactClipboard from 'react-clipboardjs-copy'
 import './App.css';
 export default class App extends React.Component {
     render () {
