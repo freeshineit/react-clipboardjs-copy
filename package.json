@@ -17,7 +17,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --hot --inline --colors --config webpack.config.js",
     "start": "npm run dev",
-    "lib": "babel src --out-dir lib"
+    "lib": "babel src --out-dir lib",
+    "publish": "npm run lib && npm publish"
   },
   "dependencies": {
     "clipboard": "^2.0.1"
