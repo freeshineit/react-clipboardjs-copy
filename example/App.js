@@ -87,6 +87,29 @@ export default class App extends React.Component {
                         <button>Copy</button>
                     </ReactClipboard>
                 </section>
+
+                <section className="app-item">
+                    <div className="app-item-desc">
+                        <div></div>
+                        <p id='multiple_grandson_element'>修复 当ReactClipboard组件的子元素中有多个子元素时，点击复制时部分区域没有反应(version 1.2.1)</p>
+                    </div>
+                    <ReactClipboard options= {{
+                        target: function(trigger) {
+                            console.log(trigger)
+                            return document.getElementById('multiple_grandson_element');
+                        }
+                    }}
+                    >
+                        <div>
+                            <button>Copy</button>
+                            <button>Copy1</button>
+                            <button>Copy2</button>
+                            <button>Copy3</button>
+                            <img src='https://avatars2.githubusercontent.com/u/16034259?s=88&v=4' />
+                            <span>span</span>
+                        </div>
+                    </ReactClipboard>
+                </section>
             </div>
         );
     }
