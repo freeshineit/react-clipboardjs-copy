@@ -10,9 +10,10 @@ class ReactClipboard extends React.Component {
 
     onClick(e) {
         const { onSuccess, onError, selection, options } = this.props;
+        const target = this.getTarget(e.target)
 
         if (!this.clipboard) {
-            this.clipboard = new Clipboard(e.target, options);
+            this.clipboard = new Clipboard(target, options);
             this.clipboard.on('success', function (e) {
                 !selection && e.clearSelection(); // 是否清除选中
                 onSuccess && onSuccess(e);
@@ -23,6 +24,19 @@ class ReactClipboard extends React.Component {
 
             this.clipboard.onClick(e)
         }
+    }
+
+    getTarget(target) {
+
+        if (target.getAttribute("data-clipboard-action")) {
+            return target;
+        }
+
+        if (target.parentNode.getAttribute("data-clipboard-action")) {
+            return target.parentNode
+        }
+
+        this.getParentNodeTarget(target.parentNode)
     }
 
     componentWillMount() {
@@ -37,7 +51,7 @@ class ReactClipboard extends React.Component {
         const elem = React.Children.only(children);
 
         return React.cloneElement(
-            elem,
+            children,
             {
                 ...other,
                 'data-clipboard-action': action,
