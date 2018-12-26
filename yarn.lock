@@ -4012,6 +4012,13 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-clipboardjs-copy@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-clipboardjs-copy/-/react-clipboardjs-copy-1.2.2.tgz#0113e45f897176165def87074c6941c299c49ac2"
+  integrity sha512-OVYUJsn9wHt9l7w33V/cx8il95veL48fVNIToHIIoBdeo8hQfjdaTgdYMQMIojuMHmQhh1397xs7pxrZFcjnaQ==
+  dependencies:
+    clipboard "^2.0.1"
+
 react-dom@^16.4.1:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.1.tgz#7f8b0223b3a5fbe205116c56deb85de32685dad6"

@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-import ReactClipboard from '../src';
+import ReactClipboard from 'react-clipboardjs-copy'
+// import ReactClipboard from '../src';
 import './App.css';
 export default class App extends React.Component {
 
