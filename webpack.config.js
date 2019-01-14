@@ -8,14 +8,15 @@ module.exports = {
         path: path.resolve(__dirname, "./example"),
         filename: "bundle.js"
     },
+    mode: 'development',
     resolve: {
         extensions: ['.js', '.jsx']
     },
     devServer: {
         contentBase: path.join(__dirname, "example"),
-        compress: true,
         inline: true,
-        port: 9000
+        port: 9000,
+        historyApiFallback: true
     },
     devtool: 'eval-source-map',
     module: {
