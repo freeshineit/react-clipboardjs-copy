@@ -13,10 +13,16 @@
     "copy",
     "react-clipboardjs-copy"
   ],
+  "bugs": {
+    "url": "https://github.com/freeshineit/react-clipboardjs-copy/issues"
+  },
   "scripts": {
     "dev": "webpack-dev-server --hot --inline --colors --config webpack.config.js",
     "start": "npm run dev",
-    "lib": "babel src --out-dir lib"
+    "lib": "babel src --out-dir lib",
+    "cover": "istanbul",
+    "test": "npm run lib && mocha -t 5000",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "clipboard": "^2.0.1"
