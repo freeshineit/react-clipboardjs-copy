@@ -113,7 +113,7 @@ npm install
 npm run dev
 ```
 
-## reference material
+## Rseference material
 
 [clipboard.js](https://clipboardjs.com/)
 
