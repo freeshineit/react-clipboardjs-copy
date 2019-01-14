@@ -1,4 +1,7 @@
+
 # react-clipboardjs-copy
+
+[![Build Status](https://travis-ci.org/freeshineit/react-clipboardjs-copy.svg?branch=master)](https://travis-ci.org/freeshineit/react-clipboardjs-copy)
 
 A react copy component that based on `clipboard.js`
 
