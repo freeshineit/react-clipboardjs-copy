@@ -19,9 +19,11 @@
   "bugs": {
     "url": "https://github.com/freeshineit/react-clipboardjs-copy/issues"
   },
+  "homepage": "https://github.com/freeshineit/react-clipboardjs-copy/example",
   "scripts": {
     "dev": "webpack-dev-server --hot --inline --colors --config webpack.config.js",
     "start": "npm run dev",
+    "build": "webpack",
     "lib": "babel src --out-dir lib"
   },
   "dependencies": {
