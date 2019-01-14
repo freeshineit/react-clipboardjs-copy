@@ -13,6 +13,9 @@
     "copy",
     "react-clipboardjs-copy"
   ],
+  "files": [
+    "lib/*.js"
+  ],
   "bugs": {
     "url": "https://github.com/freeshineit/react-clipboardjs-copy/issues"
   },
