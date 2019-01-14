@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 module.exports = {
     entry: {
         entry: [path.resolve(__dirname, './index.js')],
@@ -8,15 +7,9 @@ module.exports = {
         path: path.resolve(__dirname, "./"),
         filename: "bundle.js"
     },
-    mode: 'development',
+    mode: 'production',
     resolve: {
         extensions: ['.js', '.jsx']
-    },
-    devServer: {
-        contentBase: path.join(__dirname, "/"),
-        inline: true,
-        port: 9000,
-        historyApiFallback: true
     },
     devtool: 'eval-source-map',
     module: {
@@ -32,9 +25,6 @@ module.exports = {
                 exclude: /node_modules/
             }
         ]
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin({})
-    ],
+    }
 }
 
