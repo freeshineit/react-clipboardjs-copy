@@ -31,11 +31,7 @@ export default class App extends React.Component {
                 </section>
                 <section className="app-item">
                     <div className="app-item-desc">copy element attr value: aria-label='this is an element attr aria-label'</div>
-                    <ReactClipboard options= {{
-                        text: function(trigger) {
-                            return trigger.getAttribute('aria-label');
-                        }
-                    }}
+                    <ReactClipboard options= {{text: (trigger) => {return trigger.getAttribute('aria-label')}}}
                     aria-label='this is an element attr aria-label'
                     >
                         <button>Copy</button>
