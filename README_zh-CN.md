@@ -44,9 +44,7 @@ export default class App extends React.Component {
 
                 <section className="app-item">
                     <div className="app-item-desc">changes the focus you'll want to set the focused element as the container value</div>
-                    <ReactClipboard options= {{
-                        container: document.getElementById('modal')
-                    }}
+                    <ReactClipboard options= {{container: document.getElementById('modal')}}
                     >
                         <button>Copy</button>
                     </ReactClipboard>
