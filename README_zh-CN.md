@@ -51,11 +51,7 @@ export default class App extends React.Component {
                         <div></div>
                         <div id='dynamically_id'>this is a dynamically target element, click copy button</div>
                     </div>
-                    <ReactClipboard options= {{
-                        target: function(trigger) {
-                            return document.getElementById('dynamically_id');
-                        }
-                    }}
+                    <ReactClipboard options= {{target: (trigger) => {return document.getElementById('dynamically_id')}}}
                     >
                         <button>Copy</button>
                     </ReactClipboard>
