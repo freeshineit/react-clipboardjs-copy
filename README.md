@@ -94,7 +94,7 @@ export default class App extends React.Component {
 
 +   `target` - *string* React component will copy target element content. Corresponding to `clipboard.js` attribut `data-clipboard-target`.
 
-+   `action` - *string* React component action. Corresponding to `clipboard.js` attribut `data-clipboard-action`. But only support copy(default: 'copy').
++   `action` - *string* React component action. Corresponding to `clipboard.js` attribut `data-clipboard-action`. But only support copy(default: `copy`).
 
 +   `selection` - *boolean*  Setting whether to clear the copy selected. Corresponding to `clipboard.js` event `e.clearSelection()`. (default: true)
 

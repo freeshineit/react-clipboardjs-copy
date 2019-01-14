@@ -90,7 +90,7 @@ export default class App extends React.Component {
 
 +   `target` - *string* React组件要复制的目标元素. 其对应 `clipboard.js` 的 `data-clipboard-target`属性。
 
-+   `action` - *string*  React组件的行为. 其对应 `clipboard.js` 的 `data-clipboard-action`属性。但是目前只支持复制(默认: 'copy')。
++   `action` - *string*  React组件的行为. 其对应 `clipboard.js` 的 `data-clipboard-action`属性。但是目前只支持复制(默认: `copy`)。
 
 +   `selection` - *boolean*  设置是否清除复制的选中. 其对应 `clipboard.js` 的事件 `e.clearSelection()`. (默认: true，不清除)
 
