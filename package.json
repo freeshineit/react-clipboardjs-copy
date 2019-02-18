@@ -1,6 +1,6 @@
 {
   "name": "react-clipboardjs-copy",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "main": "./lib/index.js",
   "repository": "git@github.com:freeshineit/react-clipboardjs-copy.git",
   "author": "shine <xiaoshaoqq@gmail.com>",
