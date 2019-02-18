@@ -3,3 +3,10 @@ src/
 example/
 
 webpack.config.js
+App.css
+App.js
+index.html
+index.js
+bundle.js
+wepack.prod.js
+yarn.lock

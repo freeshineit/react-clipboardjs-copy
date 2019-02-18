@@ -6,37 +6,26 @@ class ReactClipboard extends React.Component {
     constructor(props) {
         super(props);
         this.clipboard = null;
+
+        this.copyRef = React.createRef()
     }
 
     onClick(e) {
         const { onSuccess, onError, selection, options } = this.props;
-        const target = this.getTarget(e.target)
+        const target = this.copyRef.current
 
         if (!this.clipboard) {
             this.clipboard = new Clipboard(target, options);
             this.clipboard.on('success', function (e) {
                 !selection && e.clearSelection(); // 是否清除选中
-                onSuccess && onSuccess(e);
+                onSuccess && onSuccess(target);
             });
             this.clipboard.on('error', function (e) {
-                onError && onError(e);
+                onError && onError(target);
             });
 
             this.clipboard.onClick(e)
         }
-    }
-
-    getTarget(target) {
-
-        if (target.getAttribute("data-clipboard-action")) {
-            return target;
-        }
-
-        if (target.parentNode.getAttribute("data-clipboard-action")) {
-            return target.parentNode
-        }
-
-        this.getParentNodeTarget(target.parentNode)
     }
 
     componentWillMount() {
@@ -48,8 +37,8 @@ class ReactClipboard extends React.Component {
 
     render() {
         const { target, onSuccess, onError, text, action, selection, children, ...other } = this.props;
-        const elem = React.Children.only(children);
-
+        React.Children.only(children); // 用来约束子组件的个数
+          
         return React.cloneElement(
             children,
             {
@@ -58,6 +47,7 @@ class ReactClipboard extends React.Component {
                 'data-clipboard-text': text,
                 'data-clipboard-target': target,
                 'onClick': this.onClick.bind(this),
+                ref: this.copyRef
             });
     }
 }

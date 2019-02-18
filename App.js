@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactClipboard from 'react-clipboardjs-copy'
-// import ReactClipboard from '../src';
+// import ReactClipboard from 'react-clipboardjs-copy'ss
+import ReactClipboard from './lib';
 import './App.css';
 export default class App extends React.Component {
 
@@ -41,7 +41,7 @@ export default class App extends React.Component {
                 <section className="app-item">
                     <div className="app-item-desc">copy text</div>
                     <ReactClipboard text='copy text'
-                        onSuccess={(e) => { console.log(this.button); console.log(e)}}
+                        onSuccess={(e) => { console.log(e)}}
                         onError={(e) => console.log(e)}>
                         <button ref={(node => this.button = node)}>Copy</button>
                     </ReactClipboard>
@@ -62,7 +62,7 @@ export default class App extends React.Component {
                 </section>
 
                 <section className="app-item">
-                    <div className="app-item-desc">changes the focus you'll want to set the focused element as the container value</div>
+                    <div className="app-item-desc" >changes the focus you'll want to set the focused element as the container value</div>
                     <ReactClipboard options= {{
                         container: document.getElementById('modal')
                     }}
