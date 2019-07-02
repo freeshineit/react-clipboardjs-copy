@@ -1,50 +1,50 @@
 {
-  "name": "react-clipboardjs-copy",
-  "version": "1.3.0",
-  "main": "./lib/index.js",
-  "repository": "git@github.com:freeshineit/react-clipboardjs-copy.git",
-  "author": "shine <xiaoshaoqq@gmail.com>",
-  "license": "MIT",
-  "description": "clipboardjs copy component for react",
-  "keywords": [
-    "react",
-    "react-component",
-    "clipboard",
-    "copy",
-    "react-clipboardjs-copy"
-  ],
-  "files": [
-    "lib/*.js"
-  ],
-  "bugs": {
-    "url": "https://github.com/freeshineit/react-clipboardjs-copy/issues"
-  },
-  "homepage": "https://freeshineit.github.io/react-clipboardjs-copy",
-  "scripts": {
-    "dev": "webpack-dev-server --hot --inline --colors --config webpack.config.js",
-    "start": "npm run dev",
-    "build": "webpack",
-    "lib": "babel src --out-dir lib"
-  },
-  "dependencies": {
-    "clipboard": "^2.0.1",
-    "react-clipboardjs-copy": "^1.3.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "css-loader": "^0.28.11",
-    "prop-types": "^15.6.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.11"
-  }
+    "name": "react-clipboardjs-copy",
+    "version": "1.3.1",
+    "main": "./lib/index.js",
+    "repository": "git@github.com:freeshineit/react-clipboardjs-copy.git",
+    "author": "shine <xiaoshaoqq@gmail.com>",
+    "license": "MIT",
+    "description": "clipboardjs copy component for react",
+    "keywords": [
+        "react",
+        "react-component",
+        "clipboard",
+        "copy",
+        "react-clipboardjs-copy"
+    ],
+    "files": [
+        "lib/*.js"
+    ],
+    "bugs": {
+        "url": "https://github.com/freeshineit/react-clipboardjs-copy/issues"
+    },
+    "homepage": "https://freeshineit.github.io/react-clipboardjs-copy",
+    "scripts": {
+        "dev": "webpack-dev-server --hot --inline --colors --config webpack.config.js",
+        "start": "npm run dev",
+        "build": "webpack",
+        "lib": "babel src --out-dir lib"
+    },
+    "dependencies": {
+        "clipboard": "^2.0.1",
+        "react-clipboardjs-copy": "^1.3.1"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.4",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-react": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "css-loader": "^0.28.11",
+        "prop-types": "^15.6.2",
+        "react": "^16.4.1",
+        "react-dom": "^16.4.1",
+        "style-loader": "^0.21.0",
+        "webpack": "^4.28.4",
+        "webpack-cli": "^3.2.1",
+        "webpack-dev-server": "^3.1.11"
+    }
 }
