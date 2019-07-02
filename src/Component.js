@@ -30,8 +30,6 @@ class ReactClipboard extends React.Component {
 
     componentWillUnmount() {
         // destroy clipboard
-        const { destroy } = this.props;
-        destroy && destroy();
         this.clipboard && this.clipboard.destroy();
     }
 
