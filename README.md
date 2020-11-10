@@ -2,6 +2,8 @@
 # react-clipboardjs-copy
 
 [![Build Status](https://travis-ci.org/freeshineit/react-clipboardjs-copy.svg?branch=master)](https://travis-ci.org/freeshineit/react-clipboardjs-copy)
+
+![build](https://github.com/freeshineit/react-clipboardjs-copy/workflows/build/badge.svg)
 ![Download](https://img.shields.io/npm/dm/react-clipboardjs-copy.svg)
 ![Version](https://img.shields.io/npm/v/react-clipboardjs-copy.svg)
 ![License](https://img.shields.io/npm/l/react-clipboardjs-copy.svg)
