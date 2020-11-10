@@ -23,7 +23,8 @@
   "scripts": {
     "dev": "webpack-dev-server --hot --inline --colors --config webpack.config.js",
     "start": "npm run dev",
-    "lib": "babel src --out-dir lib"
+    "lib": "babel src --out-dir lib && npm run bundle",
+    "bundle": "webpack --config webpack.prod.js"
   },
   "dependencies": {
     "clipboard": "^2.0.6"
