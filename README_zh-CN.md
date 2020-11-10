@@ -1,5 +1,10 @@
 # react-clipboardjs-copy
 
+![build](https://github.com/freeshineit/react-clipboardjs-copy/workflows/build/badge.svg)
+![Download](https://img.shields.io/npm/dm/react-clipboardjs-copy.svg)
+![Version](https://img.shields.io/npm/v/react-clipboardjs-copy.svg)
+![License](https://img.shields.io/npm/l/react-clipboardjs-copy.svg)
+
 一个基于`clipboard.js`的React复制组件
 
 [English](./README.md)
