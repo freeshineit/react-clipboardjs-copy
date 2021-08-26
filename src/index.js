@@ -1,3 +1,3 @@
-import ReactClipboard from './Component';
+import ReactClipboard from "./Component";
 
 export default ReactClipboard;
