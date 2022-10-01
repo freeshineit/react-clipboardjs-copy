@@ -50,9 +50,10 @@
   "scripts": {
     "start": "craco start",
     "test": "craco test",
-    "build": "gulp",
+    "build": "gulp && npm run docs",
     "docs": "cross-env BUILD_PATH=docs PUBLIC_URL=./ craco build",
-    "postinstall": "husky install .husky"
+    "postinstall": "husky install .husky",
+    "pub": "npm publish ./lib"
   },
   "eslintConfig": {
     "extends": [
