@@ -1,0 +1,5 @@
+/dist
+/build
+/lib
+package.json
+*.min.js

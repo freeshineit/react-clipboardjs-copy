@@ -1,16 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>react-clipboardjs-copy</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>react-clipboardjs-copy</title>
-</head>
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
 
-<body>
-  <div id='root'></div>
-  <script src='./bundle.js'></script>
-</body>
+  <body>
+    <div id="root"></div>
+    <script src="./lib/bundle/react-clipboardjs-copy.umd.js"></script>
 
+    <script type="text/babel">
+      const ReactClipboard = window.reactClipboardjsCopy;
+      ReactDOM.render(
+        <div>
+          <ReactClipboard
+            text='copy text 131'
+            onSuccess={e => console.log(e)}
+            onError={e => console.log(e)}
+          >
+            <button>Copy Text</button>
+          </ReactClipboard>
+        </div>,
+        document.getElementById('root')
+      );
+    </script>
+  </body>
 </html>

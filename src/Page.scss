@@ -1,7 +1,8 @@
-
-.App {
+.container-center {
   width: 800px;
-  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 }
 
 .app-item {
