@@ -8,22 +8,12 @@ const del = require('del');
 const through = require('through2');
 const autoprefixer = require('autoprefixer');
 const tsconfig = require('./tsconfig.json');
-const packageJson = require('./package.json');
 
 function clean() {
   return del(['./lib/**', './docs/**', './dist/**']);
 }
 
 const srcDir = `./src/lib`;
-
-const packageName = packageJson.name.split('/');
-const filename =
-  packageName.length > 1 ? packageName[packageName.length - 1] : packageName[0];
-
-// 驼峰
-const libraryName = filename.replace(/\-(\w)/g, function (all, letter) {
-  return letter.toUpperCase();
-});
 
 // const banner = `/*
 // * ${filename}.js v${packageJson.version}
@@ -102,40 +92,6 @@ function buildDeclaration() {
     .pipe(tsProject)
     .pipe(gulp.dest('lib/es/'))
     .pipe(gulp.dest('lib/cjs/'));
-}
-
-function getViteConfigForPackage({ env, formats, external }) {
-  const name = filename;
-  const isProd = env === 'production';
-  // https://github.com/vitejs/vite/blob/main/packages/vite/src/node/config.ts
-  return {
-    root: process.cwd(),
-    mode: env,
-    logLevel: 'silent',
-    define: { 'process.env.NODE_ENV': `"${env}"` },
-    // Set to `false` or an empty string to disable copied static assets to build dist dir.
-    publicDir: false,
-    build: {
-      lib: {
-        name: libraryName,
-        entry: './lib/es/index.js',
-        formats,
-        fileName: format => `${name}.${format}${isProd ? '' : `.${env}`}.js`,
-      },
-      rollupOptions: {
-        external,
-        output: {
-          dir: './lib/bundle',
-          // exports: 'named',
-          globals: {
-            react: 'React',
-            'react-dom': 'ReactDOM',
-          },
-        },
-      },
-      minify: isProd ? 'esbuild' : false,
-    },
-  };
 }
 
 function copyMetaFiles() {
