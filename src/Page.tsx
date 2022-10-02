@@ -15,7 +15,7 @@ function Page() {
     <div className='container-center'>
       <div className='App'>
         <section className='app-item'>
-          <div className='app-item-desc'>copy text</div>
+          <div className='app-item-desc'>Copy text</div>
           <ReactClipboard
             text='copy text'
             onSuccess={handleSuccess}
@@ -31,22 +31,40 @@ function Page() {
           </ReactClipboard>
         </section>
         <section className='app-item'>
-          <div className='app-item-desc'>copy target</div>
+          <div className='app-item-desc'>
+            <input
+              id='input'
+              value='git@github.com:freeshineit/react-clipboardjs-copy.git'
+            />
+          </div>
+          <ReactClipboard
+            target='#input'
+            onSuccess={handleSuccess}
+            onError={handleError}
+          >
+            <button>Copy Input value</button>
+          </ReactClipboard>
+        </section>
+        <section className='app-item'>
+          <div className='app-item-desc'>Copy target</div>
           <div className='app-item-desc copy-target'>
-            `text` `target` 同时存在时面板选择 `text`中的值
+            Default copy target and clear selection content
           </div>
           <ReactClipboard
             target='.copy-target'
-            text='this is text'
             onSuccess={handleSuccess}
             onError={handleError}
           >
             <button>Copy Text By Target ClassName</button>
           </ReactClipboard>
-          <div>attribute selection= true</div>
+        </section>
+        <section className='app-item'>
+          <div className='app-item-desc'>Copy target</div>
+          <div className='app-item-desc copy-target-selection'>
+            Copy target and selection content, selection=true
+          </div>
           <ReactClipboard
-            target={'.copy-target'}
-            text='this is text'
+            target={'.copy-target-selection'}
             selection={true}
             onSuccess={handleSuccess}
             onError={handleError}
@@ -57,7 +75,7 @@ function Page() {
 
         <section className='app-item'>
           <div className='app-item-desc'>
-            copy element attribute value: aria-label='this is an element attr
+            Copy element attribute value: aria-label='this is an element attr
             aria-label'
           </div>
           <ReactClipboard
@@ -76,7 +94,7 @@ function Page() {
 
         <section className='app-item'>
           <div className='app-item-desc' id='modal'>
-            changes the focus you'll want to set the focused element as the
+            Changes the focus you'll want to set the focused element as the
             container value
           </div>
           <ReactClipboard
@@ -92,7 +110,7 @@ function Page() {
           <div className='app-item-desc'>
             <div />
             <div id='dynamically_id'>
-              this is a dynamically target element, click copy button
+              This is a dynamically target element, click copy button
             </div>
           </div>
           <ReactClipboard
@@ -111,9 +129,7 @@ function Page() {
         <section className='app-item'>
           <div className='app-item-desc'>
             <div />
-            <p id='multiple_grandson_element'>
-              修复当ReactClipboard组件的子元素中有多个子元素时，点击复制时部分区域没有反应(version1.2.1)
-            </p>
+            <p id='multiple_grandson_element'>Multiple grandson element</p>
           </div>
           <ReactClipboard
             target={trigger => {
@@ -136,6 +152,21 @@ function Page() {
               />
               <span>span</span>
             </div>
+          </ReactClipboard>
+        </section>
+
+        <section className='app-item'>
+          <div className='app-item-desc'>
+            <textarea id='textarea'>Mussum ipsum cacilds...</textarea>
+            <div />
+          </div>
+          <ReactClipboard
+            action='cut'
+            target='#textarea'
+            onSuccess={handleSuccess}
+            onError={handleError}
+          >
+            <button>Cut</button>
           </ReactClipboard>
         </section>
       </div>
