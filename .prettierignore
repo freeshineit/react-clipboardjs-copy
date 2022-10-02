@@ -1,5 +1,7 @@
 /dist
 /build
 /lib
+/docs
+/report
 package.json
 *.min.js
