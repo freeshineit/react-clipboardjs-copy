@@ -5,23 +5,31 @@ const postcss = require('gulp-postcss');
 const babel = require('gulp-babel');
 const ts = require('gulp-typescript');
 const del = require('del');
-const webpackStream = require('webpack-stream');
-const webpack = require('webpack');
 const through = require('through2');
-const vite = require('vite');
-const rename = require('gulp-rename');
 const autoprefixer = require('autoprefixer');
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const tsconfig = require('./tsconfig.json');
 const packageJson = require('./package.json');
-const StatoscopeWebpackPlugin = require('@statoscope/webpack-plugin').default;
 
 function clean() {
   return del(['./lib/**', './docs/**', './dist/**']);
 }
 
 const srcDir = `./src/lib`;
+
+const packageName = packageJson.name.split('/');
+const filename =
+  packageName.length > 1 ? packageName[packageName.length - 1] : packageName[0];
+
+// 驼峰
+const libraryName = filename.replace(/\-(\w)/g, function (all, letter) {
+  return letter.toUpperCase();
+});
+
+// const banner = `/*
+// * ${filename}.js v${packageJson.version}
+// * (c) ${new Date().getFullYear()} ${packageJson.author}
+// * Released under the MIT License.
+// */`;
 
 function buildStyle() {
   return gulp
@@ -97,7 +105,7 @@ function buildDeclaration() {
 }
 
 function getViteConfigForPackage({ env, formats, external }) {
-  const name = packageJson.name;
+  const name = filename;
   const isProd = env === 'production';
   // https://github.com/vitejs/vite/blob/main/packages/vite/src/node/config.ts
   return {
@@ -109,7 +117,7 @@ function getViteConfigForPackage({ env, formats, external }) {
     publicDir: false,
     build: {
       lib: {
-        name: 'reactClipboardjsCopy',
+        name: libraryName,
         entry: './lib/es/index.js',
         formats,
         fileName: format => `${name}.${format}${isProd ? '' : `.${env}`}.js`,
@@ -130,140 +138,10 @@ function getViteConfigForPackage({ env, formats, external }) {
   };
 }
 
-async function buildBundles(cb) {
-  const envs = ['development', 'production'];
-  const configs = envs.map(env =>
-    getViteConfigForPackage({
-      env,
-      formats: ['es', 'cjs', 'umd'],
-      external: ['react', 'react-dom'],
-    })
-  );
-
-  await Promise.all(configs.map(config => vite.build(config)));
-  cb && cb();
-}
-
-function buildCompatibleUMD() {
-  return gulp
-    .src('lib/bundle/react-clipboardjs-copy.umd.js')
-    .pipe(
-      babel({
-        presets: [
-          [
-            '@babel/env',
-            {
-              targets: {
-                chrome: '49',
-                ios: '9',
-              },
-            },
-          ],
-        ],
-      })
-    )
-    .pipe(rename('react-clipboardjs-copy.compatible.umd.js'))
-    .pipe(gulp.dest('lib/bundle/'))
-    .pipe(rename('react-clipboardjs-copy.js'))
-    .pipe(gulp.dest('lib/umd/'));
-}
-
-// Deprecated
-function umdWebpack() {
-  return gulp
-    .src('lib/es/index.js')
-    .pipe(
-      webpackStream(
-        {
-          output: {
-            filename: 'react-clipboardjs-copy.js',
-            library: {
-              type: 'umd',
-              name: 'react-clipboardjs-copy',
-            },
-          },
-          mode: 'production',
-          optimization: {
-            usedExports: true,
-          },
-          performance: {
-            hints: false,
-          },
-          resolve: {
-            extensions: ['.js', '.json'],
-          },
-          plugins: [
-            new BundleAnalyzerPlugin({
-              analyzerMode: 'static',
-              openAnalyzer: false,
-              reportFilename: 'report/report.html',
-            }),
-            new StatoscopeWebpackPlugin({
-              saveReportTo: 'report/statoscope/report.html',
-              saveStatsTo: 'report/statoscope/stats.json',
-              open: false,
-            }),
-          ],
-          module: {
-            rules: [
-              {
-                test: /\.js$/,
-                use: {
-                  loader: 'babel-loader',
-                  options: {
-                    presets: [
-                      [
-                        '@babel/preset-env',
-                        {
-                          loose: true,
-                          modules: false,
-                          targets: {
-                            chrome: '49',
-                            ios: '10',
-                          },
-                        },
-                      ],
-                      '@babel/preset-typescript',
-                      '@babel/preset-react',
-                    ],
-                  },
-                },
-              },
-              {
-                test: /\.(png|svg|jpg|gif|jpeg)$/,
-                type: 'asset/inline',
-              },
-              {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
-              },
-            ],
-          },
-          externals: [
-            {
-              react: {
-                commonjs: 'react',
-                commonjs2: 'react',
-                amd: 'react',
-                root: 'React',
-              },
-              'react-dom': {
-                commonjs: 'react-dom',
-                commonjs2: 'react-dom',
-                amd: 'react-dom',
-                root: 'ReactDOM',
-              },
-            },
-          ],
-        },
-        webpack
-      )
-    )
-    .pipe(gulp.dest('lib/umd/'));
-}
-
 function copyMetaFiles() {
-  return gulp.src(['./README.md', './LICENSE.txt']).pipe(gulp.dest('./lib/'));
+  return gulp
+    .src(['./README.md', 'README_zh-CN.md', './LICENSE.txt'])
+    .pipe(gulp.dest('./lib/'));
 }
 
 function generatePackageJSON() {
@@ -287,9 +165,6 @@ function generatePackageJSON() {
     .pipe(gulp.dest('./lib/'));
 }
 
-exports.umdWebpack = umdWebpack;
-exports.buildBundles = buildBundles;
-
 exports.default = gulp.series(
   clean,
   buildES,
@@ -297,8 +172,5 @@ exports.default = gulp.series(
   gulp.parallel(buildDeclaration, buildStyle),
   copyAssets,
   copyMetaFiles,
-  generatePackageJSON,
-  buildBundles,
-  buildCompatibleUMD,
-  umdWebpack
+  generatePackageJSON
 );
