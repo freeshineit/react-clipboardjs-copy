@@ -20,7 +20,7 @@ export interface ReactClipboardProps {
    * as the container value.
    */
   container?: ClipboardJS.Options['container'];
-  /** 是否选择 默认是true选中的  如不需要选中 设置为false */
+  /** Setting whether to clear the copy or cut selected, default为false */
   selection?: boolean; // default true
   children: React.ReactElement;
 
@@ -41,7 +41,6 @@ export const ReactClipboard: React.FC<ReactClipboardProps> = props => {
     // https://reactjs.org/docs/strict-mode.html#ensuring-reusable-state
     // https://github.com/facebook/react/issues/24502
     if (!clipboard.current && childrenRef.current) {
-      console.log(childrenRef.current);
       clipboard.current = new Clipboard(childrenRef.current, {
         action:
           typeof props.action === 'function'
