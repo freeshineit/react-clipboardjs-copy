@@ -1,4 +1,3 @@
-
 # react-clipboardjs-copy
 
 ![build](https://github.com/freeshineit/react-clipboardjs-copy/workflows/build/badge.svg)
@@ -26,50 +25,35 @@ export default class App extends React.Component {
     render () {
         return (
             <div className="App">
-                <section className="app-item">
-                    <div className="app-item-desc">copy text</div>
-                    <ReactClipboard text='copy text'
-                        onSuccess={(e) => console.log(e)}
-                        onError={(e) => console.log(e)}>
-                        <button>Copy</button>
-                    </ReactClipboard>
-                </section>
-                <section className="app-item">
-                    <div className="app-item-desc">copy element attr value: aria-label='this is an element attr aria-label'</div>
-                    <ReactClipboard options= {{
-                        text: function(trigger) {
-                            return trigger.getAttribute('aria-label');
-                        }
-                    }}
-                    aria-label='this is an element attr aria-label'
+                <section className='app-item'>
+                  <div className='app-item-desc'>Copy text</div>
+                  <ReactClipboard
+                    text='copy text'
+                    onSuccess={() => {}}
+                    onError={() => {}}
+                  >
+                    <button
+                      onClick={() => {
+                        console.log('click button');
+                      }}
                     >
-                        <button>Copy</button>
-                    </ReactClipboard>
+                      Copy Text
+                    </button>
+                  </ReactClipboard>
                 </section>
-
-                <section className="app-item">
-                    <div className="app-item-desc">changes the focus you'll want to set the focused element as the container value</div>
-                    <ReactClipboard options= {{
-                        container: document.getElementById('modal')
-                    }}
-                    >
-                        <button>Copy</button>
-                    </ReactClipboard>
-                </section>
-
-                <section className="app-item">
-                    <div className="app-item-desc">
-                        <div></div>
-                        <div id='dynamically_id'>this is a dynamically target element, click copy button</div>
-                    </div>
-                    <ReactClipboard options= {{
-                        target: function(trigger) {
-                            return document.getElementById('dynamically_id');
-                        }
-                    }}
-                    >
-                        <button>Copy</button>
-                    </ReactClipboard>
+                <section className='app-item'>
+                  <div className='app-item-desc'>
+                    <textarea id="textarea">Mussum ipsum cacilds...</textarea>
+                  <div />
+                  </div>
+                  <ReactClipboard
+                    action="cut"
+                    target="#textarea"
+                    onSuccess={() => {}}
+                    onError={() => {}}
+                  >
+                    <button>Cut</button>
+                  </ReactClipboard>
                 </section>
             </div>
         )
@@ -78,34 +62,29 @@ export default class App extends React.Component {
 ```
 
 ```jsx
+<input id="input" value="git@github.com:freeshineit/react-clipboardjs-copy.git" />
 <ReactClipboard
-    target={'.copy-target'}
-    selection={true}
-    onSuccess={(e) => console.log(e)}
-    onError={(e) => console.log(e)}
+  target="#input"
+  onSuccess={handleSuccess}
+  onError={handleError}
 >
-    <button>Copy</button>
+  <button>
+    Copy Input value
+  </button>
 </ReactClipboard>
 ```
 
 ## Options(props)
 
-+   `text` - *string* React component will copy content. Corresponding to `clipboard.js` attribut `data-clipboard-text`.
-
-+   `target` - *string* React component will copy target element content. Corresponding to `clipboard.js` attribut `data-clipboard-target`.
-
-+   `action` - *string* React component action. Corresponding to `clipboard.js` attribut `data-clipboard-action`. But only support copy(default: `copy`).
-
-+   `selection` - *boolean*  Setting whether to clear the copy selected. Corresponding to `clipboard.js` event `e.clearSelection()`. (default: true)
-
-+   `onSuccess` - *function* Copy success callback.
-
-+   `onError` - *function* Copy error callback.
-
-+   `options` - *object* Copy object options, value {text, target, container}.
-
-
-
+| Property  | Description                                                                                                                                 | Type                                       | Default |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------- |
+| action    | Overwrites default command ('cut' or 'copy') , Corresponding to clipboard.js attribute data-clipboard-action.                               | `cut` \| 'copy'                            | `copy`  |
+| target    | React component will copy target element content. Corresponding to `clipboard.js` attribute `data-clipboard-target`.                        | string \| function(elem: Element): Element | -       |
+| text      | React component will copy content. Corresponding to `clipboard.js` attribute `data-clipboard-text`                                          | string \| function(elem: Element): string  |         |
+| container | For use in Bootstrap Modals or with any other library that changes the focus you'll want to set the focused element as the container value. | Element                                    | `body`  |
+| selection | Setting whether to clear the copy or cut selected                                                                                           | boolean                                    | false   |
+| onSuccess | Operation success callback                                                                                                                  | function(event?: ClipboardJS.Event): void  | -       |
+| onError   | Operation error callback                                                                                                                    | function(event?: ClipboardJS.Event): void  | -       |
 
 ## Developing
 
@@ -119,7 +98,7 @@ npm install
 npm run dev
 ```
 
-## Rseference material
+## Reference material
 
 [clipboard.js](https://clipboardjs.com/)
 
