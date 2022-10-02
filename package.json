@@ -1,6 +1,6 @@
 {
   "name": "react-clipboardjs-copy",
-  "version": "2.0.0-alpha1",
+  "version": "2.0.0",
   "main": "./cjs/index.js",
   "module": "./es/index.js",
   "types": "./es/index.d.ts",
@@ -27,23 +27,11 @@
   },
   "homepage": "https://freeshineit.github.io/react-clipboardjs-copy",
   "resolutions": {
-    "@types/react": "18",
-    "@types/react-dom": "18"
+    "@types/react": "17",
+    "@types/react-dom": "17"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "clipboard": "2.0.11",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
+    "clipboard": "2.0.11"
   },
   "scripts": {
     "start": "craco start",
@@ -72,6 +60,13 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@craco/craco": "^6.4.5",
@@ -88,6 +83,11 @@
     "prettier": "^2.7.1",
     "pretty-quick": "^3.1.3",
     "sass": "^1.55.0",
-    "through2": "^4.0.2"
+    "through2": "^4.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.4.2",
+    "web-vitals": "^2.1.0"
   }
 }
