@@ -2,6 +2,7 @@
 
 - 支持 typescript
 - 升级 `clipboard` 依赖到 2.0.11
+- 支持剪切
 - [组件属性更新](./src/lib/Components.tsx), 不在支持 1.x
 
 ## 1.3.0 (2019-02-18)
