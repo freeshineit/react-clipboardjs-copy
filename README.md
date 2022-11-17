@@ -78,7 +78,7 @@ export default class App extends React.Component {
 
 | Property  | Description                                                                                                                                 | Type                                       | Default |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------- |
-| action    | Overwrites default command ('cut' or 'copy') , Corresponding to clipboard.js attribute data-clipboard-action.                               | `cut` \| 'copy'                            | `copy`  |
+| action    | Overwrites default command (`cut` or `copy`) , Corresponding to clipboard.js attribute data-clipboard-action.                               | `cut` \| `copy`                            | `copy`  |
 | target    | React component will copy target element content. Corresponding to `clipboard.js` attribute `data-clipboard-target`.                        | string \| function(elem: Element): Element | -       |
 | text      | React component will copy content. Corresponding to `clipboard.js` attribute `data-clipboard-text`                                          | string \| function(elem: Element): string  |         |
 | container | For use in Bootstrap Modals or with any other library that changes the focus you'll want to set the focused element as the container value. | Element                                    | `body`  |
