@@ -39,8 +39,9 @@
     "test": "craco test",
     "build": "gulp && npm run docs",
     "docs": "cross-env BUILD_PATH=docs PUBLIC_URL=./ craco build",
-    "postinstall": "husky install .husky",
-    "pub": "npm publish ./lib"
+    "pub": "npm publish ./lib",
+    "prepare": "husky install .husky",
+    "preinstall": "npx only-allow yarn"
   },
   "eslintConfig": {
     "extends": [
