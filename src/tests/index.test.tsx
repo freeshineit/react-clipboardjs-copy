@@ -52,7 +52,7 @@ test('component cut text', async () => {
   await render(
     <section className='app-item'>
       <div className='app-item-desc'>
-        <textarea id='textarea'>{cutText}</textarea>
+        <textarea id='textarea' defaultValue={cutText}></textarea>
         <div />
       </div>
       <ReactClipboard
