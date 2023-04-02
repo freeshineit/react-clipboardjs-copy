@@ -34,7 +34,7 @@ function Page() {
           <div className='app-item-desc'>
             <input
               id='input'
-              value='git@github.com:freeshineit/react-clipboardjs-copy.git'
+              defaultValue='git@github.com:freeshineit/react-clipboardjs-copy.git'
             />
           </div>
           <ReactClipboard
@@ -157,7 +157,10 @@ function Page() {
 
         <section className='app-item'>
           <div className='app-item-desc'>
-            <textarea id='textarea'>Mussum ipsum cacilds...</textarea>
+            <textarea
+              id='textarea'
+              defaultValue='Mussum ipsum cacilds...'
+            ></textarea>
             <div />
           </div>
           <ReactClipboard
