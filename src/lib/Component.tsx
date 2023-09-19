@@ -76,7 +76,7 @@ export const ReactClipboard: React.FC<ReactClipboardProps> = props => {
 
   // 用来约束子组件的个数
   if (!React.Children.only(props.children)) {
-    console.error('');
+    console.error('Only one child is supported');
     return null;
   }
 
