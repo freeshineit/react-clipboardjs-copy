@@ -1,6 +1,6 @@
 {
   "name": "react-clipboardjs-copy",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "main": "./cjs/index.js",
   "module": "./es/index.js",
   "types": "./es/index.d.ts",
