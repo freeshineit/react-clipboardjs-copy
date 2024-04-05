@@ -80,6 +80,9 @@ devDependencies:
   only-allow:
     specifier: ^1.2.1
     version: 1.2.1
+  postcss:
+    specifier: ^8.4.38
+    version: 8.4.38
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
