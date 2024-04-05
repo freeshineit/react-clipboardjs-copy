@@ -75,7 +75,7 @@
     "@types/react-dom": "^18.2.24",
     "autoprefixer": "^10.4.19",
     "cross-env": "^7.0.3",
-    "del": "^7.1.0",
+    "del": "^6.1.1",
     "eslint-config-react-app": "^7.0.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
