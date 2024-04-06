@@ -41,7 +41,7 @@ const srcDir = `./src`;
 
 function buildCJS() {
   return gulp
-    .src(['lib/es/**/*.js'])
+    .src([`${distDir}/es/**/*.js`])
     .pipe(
       babel({
         plugins: ['@babel/plugin-transform-modules-commonjs'],
@@ -51,6 +51,7 @@ function buildCJS() {
 }
 
 function buildES() {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const tsProject = ts({
     ...tsconfig.compilerOptions,
     module: 'ES6',
@@ -70,6 +71,7 @@ function buildES() {
 }
 
 function buildDeclaration() {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const tsProject = ts({
     ...tsconfig.compilerOptions,
     module: 'ES6',
@@ -98,11 +100,11 @@ function generatePackageJSON() {
     .pipe(
       through.obj((file, enc, cb) => {
         const rawJSON = file.contents.toString();
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         const parsed = JSON.parse(rawJSON);
         delete parsed.scripts;
         delete parsed.devDependencies;
         delete parsed.publishConfig;
-        delete parsed.files;
         delete parsed.resolutions;
         delete parsed.packageManager;
         parsed.main = './cjs/index.js';

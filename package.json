@@ -13,12 +13,6 @@
     "cut",
     "react-clipboardjs-copy"
   ],
-  "files": [
-    "lib/*.js",
-    "LICENSE",
-    "README.md",
-    "README_zh-CN.md"
-  ],
   "bugs": {
     "url": "https://github.com/freeshineit/react-clipboardjs-copy/issues"
   },
