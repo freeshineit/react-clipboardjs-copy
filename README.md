@@ -83,8 +83,13 @@ cd react-clipboardjs-copy
 
 pnpm install
 
+## development
 pnpm run dev
 
+## test
+pnpm run test
+
+## production
 pnpm run build
 ```
 
