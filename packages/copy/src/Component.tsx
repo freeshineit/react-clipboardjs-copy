@@ -25,27 +25,24 @@ export interface ReactClipboardProps {
   children: React.ReactElement;
 
   /** success operation callback */
-  onSuccess?(event?: ClipboardJS.Event): void;
+  onSuccess?: (event?: ClipboardJS.Event) => void;
   /** error operation callback */
-  onError?(event?: ClipboardJS.Event): void; //
+  onError?: (event?: ClipboardJS.Event) => void; //
 }
 
 export { Clipboard };
 
-export const ReactClipboard: React.FC<ReactClipboardProps> = props => {
+export const ReactClipboard: React.FC<ReactClipboardProps> = (props) => {
   const childrenRef = useRef<Element>();
   const clipboard = useRef<Clipboard>();
 
   useEffect(() => {
-    //⚠️： useEffect Run Twice in React v18.0 https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93
+    // ⚠️： useEffect Run Twice in React v18.0 https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93
     // https://reactjs.org/docs/strict-mode.html#ensuring-reusable-state
     // https://github.com/facebook/react/issues/24502
     if (!clipboard.current && childrenRef.current) {
       clipboard.current = new Clipboard(childrenRef.current, {
-        action:
-          typeof props.action === 'function'
-            ? props.action || 'copy'
-            : undefined,
+        action: typeof props.action === 'function' ? props.action || 'copy' : undefined,
         target: typeof props.target === 'function' ? props.target : undefined,
         text: typeof props.text === 'function' ? props.text : undefined,
         container: props.container,
@@ -81,12 +78,9 @@ export const ReactClipboard: React.FC<ReactClipboardProps> = props => {
   }
 
   return React.cloneElement(props.children, {
-    'data-clipboard-action':
-      typeof props.action === 'string' ? props.action || 'copy' : undefined,
-    'data-clipboard-text':
-      typeof props.text === 'string' ? props.text : undefined,
-    'data-clipboard-target':
-      typeof props.target === 'string' ? props.target : undefined,
+    'data-clipboard-action': typeof props.action === 'string' ? props.action || 'copy' : undefined,
+    'data-clipboard-text': typeof props.text === 'string' ? props.text : undefined,
+    'data-clipboard-target': typeof props.target === 'string' ? props.target : undefined,
     ref: childrenRef,
   });
 };

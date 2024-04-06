@@ -1,13 +1,15 @@
 # dependencies
-/node_modules
+node_modules/
 .cache
-dist
 
 # production
-/build
-/dist
-/lib
-/report
+build/
+dist/
+lib/
+report/
+coverage/
+
+packages/*/lib
 
 # misc
 .DS_Store

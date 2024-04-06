@@ -1,0 +1,35 @@
+{
+  "name": "site",
+  "version": "0.1.0",
+  "repository": "git@github.com:freeshineit/react-clipboardjs-copy.git",
+  "author": "shine <xiaoshaoqq@gmail.com>",
+  "license": "MIT",
+  "files": [],
+  "bugs": {
+    "url": "https://github.com/freeshineit/react-clipboardjs-copy/issues"
+  },
+  "homepage": "https://freeshineit.github.io/react-clipboardjs-copy",
+  "dependencies": {},
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "vite": "^5.2.8",
+    "vite-plugin-eslint": "^1.8.1",
+    "react-clipboardjs-copy": "workspace:*"
+  }
+}

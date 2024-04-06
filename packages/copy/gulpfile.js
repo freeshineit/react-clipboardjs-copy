@@ -1,19 +1,11 @@
 const gulp = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
-// const path = require("path");
-const postcss = require('gulp-postcss');
 const babel = require('gulp-babel');
 const ts = require('gulp-typescript');
-const del = require('del');
 const through = require('through2');
-const autoprefixer = require('autoprefixer');
 const tsconfig = require('./tsconfig.json');
 
-function clean() {
-  return del(['./lib/**', './docs/**', './dist/**']);
-}
-
-const srcDir = `./src/lib`;
+const distDir = 'dist';
+const srcDir = `./src`;
 
 // const banner = `/*
 // * ${filename}.js v${packageJson.version}
@@ -21,31 +13,31 @@ const srcDir = `./src/lib`;
 // * Released under the MIT License.
 // */`;
 
-function buildStyle() {
-  return gulp
-    .src([`${srcDir}/**/*.scss`], {
-      base: srcDir,
-      ignore: ['**/demos/**/*', '**/tests/**/*'],
-    })
-    .pipe(sass().on('error', sass.logError))
-    .pipe(
-      postcss([
-        autoprefixer({
-          overrideBrowserslist: 'iOS >= 10, Chrome >= 49',
-        }),
-      ])
-    )
-    .pipe(gulp.dest('./lib/es'))
-    .pipe(gulp.dest('./lib/cjs'));
-}
+// function buildStyle() {
+//   return gulp
+//     .src([`${srcDir}/**/*.scss`], {
+//       base: srcDir,
+//       ignore: ['**/demos/**/*', '**/tests/**/*'],
+//     })
+//     .pipe(sass().on('error', sass.logError))
+//     .pipe(
+//       postcss([
+//         autoprefixer({
+//           overrideBrowserslist: 'iOS >= 10, Chrome >= 49',
+//         }),
+//       ]),
+//     )
+//     .pipe(gulp.dest(`./${distDir}/es`))
+//     .pipe(gulp.dest(`./${distDir}/cjs`));
+// }
 
-function copyAssets() {
-  return gulp
-    .src(`${srcDir}/assets/**/*`)
-    .pipe(gulp.dest('lib/assets'))
-    .pipe(gulp.dest('lib/es/assets'))
-    .pipe(gulp.dest('lib/cjs/assets'));
-}
+// function copyAssets() {
+//   return gulp
+//     .src(`${srcDir}/assets/**/*`)
+//     .pipe(gulp.dest(`${distDir}/assets`))
+//     .pipe(gulp.dest(`${distDir}/es/assets`))
+//     .pipe(gulp.dest(`${distDir}/cjs/assets`));
+// }
 
 function buildCJS() {
   return gulp
@@ -53,9 +45,9 @@ function buildCJS() {
     .pipe(
       babel({
         plugins: ['@babel/plugin-transform-modules-commonjs'],
-      })
+      }),
     )
-    .pipe(gulp.dest('lib/cjs/'));
+    .pipe(gulp.dest(`${distDir}/cjs/`));
 }
 
 function buildES() {
@@ -72,9 +64,9 @@ function buildES() {
     .pipe(
       babel({
         plugins: [],
-      })
+      }),
     )
-    .pipe(gulp.dest('lib/es/'));
+    .pipe(gulp.dest(`${distDir}/es/`));
 }
 
 function buildDeclaration() {
@@ -90,14 +82,14 @@ function buildDeclaration() {
       ignore: ['**/demos/**/*', '**/tests/**/*'],
     })
     .pipe(tsProject)
-    .pipe(gulp.dest('lib/es/'))
-    .pipe(gulp.dest('lib/cjs/'));
+    .pipe(gulp.dest(`${distDir}/es/`))
+    .pipe(gulp.dest(`${distDir}/cjs/`));
 }
 
 function copyMetaFiles() {
   return gulp
-    .src(['./README.md', 'README_zh-CN.md', './LICENSE.txt'])
-    .pipe(gulp.dest('./lib/'));
+    .src(['../../README.md', '../../README_zh-CN.md', '../../LICENSE.txt'], { allowEmpty: true })
+    .pipe(gulp.dest(`./${distDir}/`));
 }
 
 function generatePackageJSON() {
@@ -113,20 +105,23 @@ function generatePackageJSON() {
         delete parsed.files;
         delete parsed.resolutions;
         delete parsed.packageManager;
+        parsed.main = './cjs/index.js';
+        parsed.module = './es/index.js';
+        parsed.types = './es/index.d.ts';
+
         const stringified = JSON.stringify(parsed, null, 2);
+
         file.contents = Buffer.from(stringified);
         cb(null, file);
-      })
+      }),
     )
-    .pipe(gulp.dest('./lib/'));
+    .pipe(gulp.dest(`./${distDir}/`));
 }
 
 exports.default = gulp.series(
-  clean,
   buildES,
   buildCJS,
-  gulp.parallel(buildDeclaration, buildStyle),
-  copyAssets,
+  gulp.parallel(buildDeclaration),
   copyMetaFiles,
-  generatePackageJSON
+  generatePackageJSON,
 );
