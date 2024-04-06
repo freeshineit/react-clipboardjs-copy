@@ -7,7 +7,7 @@ const config: Config = {
 
   // A list of paths to directories that Jest should use to search for files in
   // https://jestjs.io/docs/configuration#roots-arraystring
-  roots: ['<rootDir>/src/'],
+  roots: ['<rootDir>/'],
 
   // The glob patterns Jest uses to detect test files.
   // https://jestjs.io/docs/configuration#testmatch-arraystring
@@ -48,7 +48,7 @@ const config: Config = {
     '^.+\\.(jpg|jpeg|png|gif|webp|avif|svg|ttf|woff|woff2)$': '<rootDir>/__mocks__/fileMock.js',
 
     // Handle TypeScript path aliases
-    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@/(.*)$': '<rootDir>/$1',
   },
 
   verbose: true,

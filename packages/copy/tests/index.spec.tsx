@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import ReactClipboard from './';
+import ReactClipboard from '../src';
 
 test('renders learn click ReactClipboard component', async () => {
   const handleClick = jest.fn();

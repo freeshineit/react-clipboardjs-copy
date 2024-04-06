@@ -5,11 +5,5 @@
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "vite.config.ts",
-    "scripts/*",
-    ".eslintrc.cjs",
-    ".prettierrc.cjs",
-    "commitlint.config.js"
-  ]
+  "include": ["vite.config.ts", ".eslintrc.cjs", ".prettierrc.cjs", "commitlint.config.js"]
 }
