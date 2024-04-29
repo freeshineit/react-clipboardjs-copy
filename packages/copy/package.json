@@ -8,21 +8,8 @@
   "author": "ShineShao <xiaoshaoqq@gmail.com>",
   "license": "MIT",
   "description": "clipboard.js copy component for react",
-  "keywords": [
-    "react",
-    "react-component",
-    "clipboard",
-    "copy",
-    "cut",
-    "react-clipboardjs-copy"
-  ],
-  "files": [
-    "cjs",
-    "es",
-    "LICENSE",
-    "README.md",
-    "README_zh-CN.md"
-  ],
+  "keywords": ["react", "react-component", "clipboard", "copy", "cut", "react-clipboardjs-copy"],
+  "files": ["cjs", "es", "LICENSE", "README.md", "README_zh-CN.md"],
   "bugs": {
     "url": "https://github.com/freeshineit/react-clipboardjs-copy/issues"
   },
@@ -50,7 +37,7 @@
     "@testing-library/react": "^14.2.2",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.12",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
