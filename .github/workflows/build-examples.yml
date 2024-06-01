@@ -1,0 +1,35 @@
+name: build-examples
+
+on:
+  push:
+    branches: ['master', 'develop']
+  pull_request:
+    branches: ['master']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 21.x, 22.x]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # 不用pnpm是因为pnpm的workspace的影响
+      - name: Build cra-app
+        working-directory: ./examples/cra-app
+        run: |
+          yarn install
+          yarn run build
+
+      - name: Build with-vite
+        working-directory: ./examples/with-vite
+        run: |
+          yarn install
+          yarn run build
