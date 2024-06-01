@@ -20,18 +20,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8
 
+      # 不用pnpm是因为pnpm的workspace的影响
       - name: Build cra-app
         working-directory: ./examples/cra-app
         run: |
-          pnpm install
-          pnpm run build
+          yarn install
+          yarn run build
 
       - name: Build with-vite
         working-directory: ./examples/with-vite
         run: |
-          pnpm install
-          pnpm run build
+          yarn install
+          yarn run build
