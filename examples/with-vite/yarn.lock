@@ -1224,10 +1224,10 @@ postcss@^8.4.38, postcss@^8.4.43:
     picocolors "^1.1.0"
     source-map-js "^1.2.1"
 
-react-clipboardjs-copy@^2.1.0-beta.1:
-  version "2.1.0-beta.1"
-  resolved "https://registry.yarnpkg.com/react-clipboardjs-copy/-/react-clipboardjs-copy-2.1.0-beta.1.tgz#bc5273ce8c9df9f6b789301baba7661d6698a473"
-  integrity sha512-OVjQw9oJVH7/4FrlDsyKivs3VPKx8GwRCATv5i8GP2hKtit+VtIvw5RkBWk789D0/cw78w240BPd+Qe4YRclrA==
+react-clipboardjs-copy@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-clipboardjs-copy/-/react-clipboardjs-copy-2.1.0.tgz#09705895529e572c5b9de3a7c212f0629857ce9b"
+  integrity sha512-p1MoNVxhvGp/0/Bbf04bbCWgiweJP0xpM1cEUEtempTQgei4Lzki9vkc8onZBV66BhSUeUU+rliLEZBA23qE3Q==
   dependencies:
     clipboard "2.0.11"
 
