@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 21.x, 22.x]
+        node-version: [18.x, 20.x, 21.x, 22.x] # bfj@8.0.0: The engine "node" is incompatible with this module. Expected version ">= 18.0.0".
 
     steps:
       - uses: actions/checkout@v4
@@ -27,6 +27,8 @@ jobs:
         run: |
           yarn install
           yarn run build
+        env:
+          CI: false
 
       - name: Build with-vite
         working-directory: ./examples/with-vite

@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "author": "shine <xiaoshaoqq@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build"
@@ -25,13 +24,13 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "@vitejs/plugin-react-swc": "^3.6.0",
-    "postcss-preset-env": "^9.5.14",
+    "postcss": "^8.4.38",
+    "postcss-preset-env": "^9.6.0",
     "react": "^18.2.0",
-    "react-clipboardjs-copy": "2.0.2",
+    "react-clipboardjs-copy": "^2.1.0",
     "react-dom": "^18.2.0",
     "sass": "^1.77.4",
     "typescript": "5.3.3",
-    "vite": "^5.2.8",
-    "vite-plugin-eslint": "^1.8.1"
+    "vite": "^5.4.10"
   }
 }

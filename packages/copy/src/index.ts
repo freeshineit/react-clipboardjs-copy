@@ -1,5 +1,5 @@
-import { ReactClipboard, Clipboard } from './Component';
+import { ReactClipboard, ClipboardJS } from './Component';
 export type { ReactClipboardProps } from './Component';
-export { Clipboard };
+export { ClipboardJS };
 
 export default ReactClipboard;
