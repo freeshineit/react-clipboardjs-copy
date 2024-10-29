@@ -27,6 +27,8 @@ jobs:
         run: |
           yarn install
           yarn run build
+        env:
+          CI: false
 
       - name: Build with-vite
         working-directory: ./examples/with-vite
