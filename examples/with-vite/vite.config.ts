@@ -1,6 +1,5 @@
 import { defineConfig, type UserConfig, type ConfigEnv } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import eslint from 'vite-plugin-eslint';
 import postcssPreset from 'postcss-preset-env';
 
 // https://vitejs.dev/config/
@@ -39,6 +38,6 @@ export default defineConfig(((env: ConfigEnv) => {
       // },
     },
     define: {},
-    plugins: [react(), isDev ? eslint() : undefined].filter(Boolean),
+    plugins: [react()].filter(Boolean),
   };
 }) as UserConfig);
