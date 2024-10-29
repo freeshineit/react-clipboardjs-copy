@@ -5446,10 +5446,10 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-clipboardjs-copy@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/react-clipboardjs-copy/-/react-clipboardjs-copy-2.0.2.tgz#73a308a5c2e6309aff054b6ac5e08a068d9cc0aa"
-  integrity sha512-vNCy+bNxwuE2KcrIQKhJ8Ra8jaglZzkJSpWBZ7EKD0Qh8Jdgu/hHRGwRfiH2uuNqCGFf/MubDdxhFsYVNUwcIQ==
+react-clipboardjs-copy@^2.1.0-beta.1:
+  version "2.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/react-clipboardjs-copy/-/react-clipboardjs-copy-2.1.0-beta.1.tgz#bc5273ce8c9df9f6b789301baba7661d6698a473"
+  integrity sha512-OVjQw9oJVH7/4FrlDsyKivs3VPKx8GwRCATv5i8GP2hKtit+VtIvw5RkBWk789D0/cw78w240BPd+Qe4YRclrA==
   dependencies:
     clipboard "2.0.11"
 
@@ -6062,6 +6062,7 @@ statuses@2.0.1:
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==

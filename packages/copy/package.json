@@ -1,6 +1,6 @@
 {
   "name": "react-clipboardjs-copy",
-  "version": "2.0.2",
+  "version": "2.1.0-beta.1",
   "main": "./src/index.ts",
   "module": "./src/index.ts",
   "types": "./src/index.ts",
@@ -25,7 +25,7 @@
     "prepublish": "exit 0"
   },
   "engines": {
-    "react": ">=16.8.0"
+    "react": ">=16.8"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
@@ -47,7 +47,7 @@
     "ts-jest": "^29.1.2"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   }
 }
