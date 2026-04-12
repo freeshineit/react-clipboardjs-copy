@@ -1,6 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
+import "./Page.scss";
 import { useCallback } from "react";
 import ReactClipboard from "react-clipboardjs-copy";
-import "./Page.scss";
 
 function Page() {
   const handleSuccess = useCallback((e: any) => {
@@ -43,7 +44,7 @@ function Page() {
         <section className="app-item">
           <div className="app-item-desc">Copy target</div>
           <div className="app-item-desc copy-target-selection">Copy target and selection content, selection=true</div>
-          <ReactClipboard target={".copy-target-selection"} selection={true} onSuccess={handleSuccess} onError={handleError}>
+          <ReactClipboard target=".copy-target-selection" selection={true} onSuccess={handleSuccess} onError={handleError}>
             <button>Copy Text By Target ClassName and Selection </button>
           </ReactClipboard>
         </section>
@@ -111,7 +112,7 @@ function Page() {
 
         <section className="app-item">
           <div className="app-item-desc">
-            <textarea id="textarea" defaultValue="Mussum ipsum cacilds..."></textarea>
+            <textarea id="textarea" defaultValue="Mussum ipsum cacilds..." />
             <div />
           </div>
           <ReactClipboard action="cut" target="#textarea" onSuccess={handleSuccess} onError={handleError}>

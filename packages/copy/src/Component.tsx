@@ -50,7 +50,9 @@ export const ReactClipboard: React.FC<ReactClipboardProps> = (props) => {
 
       // listen success
       clipboard.current.on("success", function (e: ClipboardJS.Event) {
-        !props.selection && e.clearSelection(); // clear selection
+        if (!props.selection) {
+          e.clearSelection(); // clear selection
+        }
         if (typeof props.onSuccess === "function") {
           props.onSuccess(e);
         }

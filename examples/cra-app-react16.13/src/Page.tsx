@@ -1,6 +1,6 @@
+import "./Page.scss";
 import { useCallback } from "react";
 import ReactClipboard from "react-clipboardjs-copy";
-import "./Page.scss";
 
 function Page() {
   const handleSuccess = useCallback((e: any) => {
@@ -43,13 +43,13 @@ function Page() {
         <section className="app-item">
           <div className="app-item-desc">Copy target</div>
           <div className="app-item-desc copy-target-selection">Copy target and selection content, selection=true</div>
-          <ReactClipboard target={".copy-target-selection"} selection={true} onSuccess={handleSuccess} onError={handleError}>
+          <ReactClipboard target=".copy-target-selection" selection={true} onSuccess={handleSuccess} onError={handleError}>
             <button>Copy Text By Target ClassName and Selection </button>
           </ReactClipboard>
         </section>
 
         <section className="app-item">
-          <div className="app-item-desc">Copy element attribute value: aria-label='this is an element attr aria-label'</div>
+          <div className="app-item-desc">Copy element attribute value: aria-label=&apos;this is an element attr aria-label&apos;</div>
           <ReactClipboard
             text={(trigger: any) => {
               console.log(trigger, trigger.getAttribute("aria-label"));
@@ -63,7 +63,7 @@ function Page() {
 
         <section className="app-item">
           <div className="app-item-desc" id="modal">
-            Changes the focus you'll want to set the focused element as the container value
+            Changes the focus you&apos;ll want to set the focused element as the container value
           </div>
           <ReactClipboard container={document.getElementById("modal") as Element} onSuccess={handleSuccess} onError={handleError}>
             <button>Copy</button>
@@ -111,7 +111,7 @@ function Page() {
 
         <section className="app-item">
           <div className="app-item-desc">
-            <textarea id="textarea" defaultValue="Mussum ipsum cacilds..."></textarea>
+            <textarea id="textarea" defaultValue="Mussum ipsum cacilds..." />
             <div />
           </div>
           <ReactClipboard action="cut" target="#textarea" onSuccess={handleSuccess} onError={handleError}>

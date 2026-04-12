@@ -1,3 +1,2 @@
-#!/bin/sh
-
 npx pretty-quick --staged
+pnpm lint:check

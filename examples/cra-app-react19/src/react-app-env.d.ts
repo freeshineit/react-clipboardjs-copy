@@ -1,1 +1,1 @@
-/// <reference types="react-scripts" />
+/// <reference types="@skax/react-scripts" />
