@@ -1,21 +1,21 @@
-import { defineConfig, type UserConfig, type ConfigEnv } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import eslint from 'vite-plugin-eslint';
-import postcssPreset from 'postcss-preset-env';
-import path from 'path';
+import { defineConfig, type UserConfig, type ConfigEnv } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import eslint from "vite-plugin-eslint";
+import postcssPreset from "postcss-preset-env";
+import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(((env: ConfigEnv) => {
-  const isDev = env.mode === 'development';
+  const isDev = env.mode === "development";
 
   return {
-    base: './',
+    base: "./",
     server: {
       // port: 3000, // 设置端口号
     },
     resolve: {
       alias: {
-        'react-clipboardjs-copy': path.resolve(__dirname, '../packages/copy/src'),
+        "react-clipboardjs-copy": path.resolve(__dirname, "../packages/copy/src"),
       },
     },
     css: {
@@ -24,8 +24,8 @@ export default defineConfig(((env: ConfigEnv) => {
       },
     },
     build: {
-      outDir: '../docs',
-      minify: 'terser',
+      outDir: "../docs",
+      minify: "terser",
       rollupOptions: {
         output: {
           /**
@@ -33,7 +33,7 @@ export default defineConfig(((env: ConfigEnv) => {
            * 例如 lodash 模块打包成一个 chunk，名称是 lodash
            */
           manualChunks: {
-            dll: ['react', 'react-dom'],
+            dll: ["react", "react-dom"],
           },
         },
       },

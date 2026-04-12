@@ -15,9 +15,9 @@ npm install --save react-clipboardjs-copy
 ## Basic usage
 
 ```jsx
-import React from 'react';
-import ReactClipboard from 'react-clipboardjs-copy';
-import './App.css';
+import React from "react";
+import ReactClipboard from "react-clipboardjs-copy";
+import "./App.css";
 export default class App extends React.Component {
   render() {
     return (
@@ -27,9 +27,8 @@ export default class App extends React.Component {
           <ReactClipboard text="copy text" onSuccess={() => {}} onError={() => {}}>
             <button
               onClick={() => {
-                console.log('click button');
-              }}
-            >
+                console.log("click button");
+              }}>
               Copy Text
             </button>
           </ReactClipboard>
@@ -64,15 +63,15 @@ export default class App extends React.Component {
 
 ## Options(props)
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| action | Overwrites default command (`cut` or `copy`) , Corresponding to clipboard.js attribute data-clipboard-action. | `cut` \| `copy` | `copy` |
-| target | React component will copy target element content. Corresponding to `clipboard.js` attribute `data-clipboard-target`. | string \| function(elem: Element): Element | - |
-| text | React component will copy content. Corresponding to `clipboard.js` attribute `data-clipboard-text` | string \| function(elem: Element): string |  |
-| container | For use in Bootstrap Modals or with any other library that changes the focus you'll want to set the focused element as the container value. | Element | `body` |
-| selection | Setting whether to clear the copy or cut selected | boolean | false |
-| onSuccess | Operation success callback | function(event?: ClipboardJS.Event): void | - |
-| onError | Operation error callback | function(event?: ClipboardJS.Event): void | - |
+| Property  | Description                                                                                                                                 | Type                                       | Default |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------- |
+| action    | Overwrites default command (`cut` or `copy`) , Corresponding to clipboard.js attribute data-clipboard-action.                               | `cut` \| `copy`                            | `copy`  |
+| target    | React component will copy target element content. Corresponding to `clipboard.js` attribute `data-clipboard-target`.                        | string \| function(elem: Element): Element | -       |
+| text      | React component will copy content. Corresponding to `clipboard.js` attribute `data-clipboard-text`                                          | string \| function(elem: Element): string  |         |
+| container | For use in Bootstrap Modals or with any other library that changes the focus you'll want to set the focused element as the container value. | Element                                    | `body`  |
+| selection | Setting whether to clear the copy or cut selected                                                                                           | boolean                                    | false   |
+| onSuccess | Operation success callback                                                                                                                  | function(event?: ClipboardJS.Event): void  | -       |
+| onError   | Operation error callback                                                                                                                    | function(event?: ClipboardJS.Event): void  | -       |
 
 ## Developing
 

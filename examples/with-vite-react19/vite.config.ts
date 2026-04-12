@@ -1,10 +1,10 @@
-import { defineConfig, type UserConfig, type ConfigEnv } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import postcssPreset from 'postcss-preset-env';
+import { defineConfig, type UserConfig, type ConfigEnv } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import postcssPreset from "postcss-preset-env";
 
 // https://vitejs.dev/config/
 export default defineConfig(((env: ConfigEnv) => {
-  const isDev = env.mode === 'development';
+  const isDev = env.mode === "development";
 
   return {
     server: {

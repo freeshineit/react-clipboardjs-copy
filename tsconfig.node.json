@@ -2,13 +2,8 @@
   "compilerOptions": {
     "composite": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    ".eslintrc.cjs",
-    ".prettierrc.cjs",
-    "commitlint.config.js",
-    "packages/copy/gulpfile.js"
-  ]
+  "include": ["vite.config.ts", "vitest.config.ts", "**/*.mjs", "**/*.cjs", "**/*.js", "**/*.ts"]
 }

@@ -1,10 +1,10 @@
-const gulp = require('gulp');
-const babel = require('gulp-babel');
-const ts = require('gulp-typescript');
-const through = require('through2');
-const tsconfig = require('./tsconfig.json');
+const gulp = require("gulp");
+const babel = require("gulp-babel");
+const ts = require("gulp-typescript");
+const through = require("through2");
+const tsconfig = require("./tsconfig.json");
 
-const distDir = 'dist';
+const distDir = "dist";
 const srcDir = `./src`;
 
 // const banner = `/*
@@ -44,7 +44,7 @@ function buildCJS() {
     .src([`${distDir}/es/**/*.js`])
     .pipe(
       babel({
-        plugins: ['@babel/plugin-transform-modules-commonjs'],
+        plugins: ["@babel/plugin-transform-modules-commonjs"],
       }),
     )
     .pipe(gulp.dest(`${distDir}/cjs/`));
@@ -54,12 +54,12 @@ function buildES() {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const tsProject = ts({
     ...tsconfig.compilerOptions,
-    module: 'ES6',
+    module: "ES6",
     isolatedModules: false,
   });
   return gulp
     .src([`${srcDir}/**/*.{ts,tsx}`], {
-      ignore: ['**/demos/**/*', '**/tests/**/*'],
+      ignore: ["**/demos/**/*", "**/tests/**/*"],
     })
     .pipe(tsProject)
     .pipe(
@@ -74,14 +74,14 @@ function buildDeclaration() {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const tsProject = ts({
     ...tsconfig.compilerOptions,
-    module: 'ES6',
+    module: "ES6",
     isolatedModules: false,
     declaration: true,
     emitDeclarationOnly: true,
   });
   return gulp
     .src([`${srcDir}/**/*.{ts,tsx}`], {
-      ignore: ['**/demos/**/*', '**/tests/**/*'],
+      ignore: ["**/demos/**/*", "**/tests/**/*"],
     })
     .pipe(tsProject)
     .pipe(gulp.dest(`${distDir}/es/`))
@@ -89,14 +89,12 @@ function buildDeclaration() {
 }
 
 function copyMetaFiles() {
-  return gulp
-    .src(['../../README.md', '../../README_zh-CN.md', '../../LICENSE.txt'], { allowEmpty: true })
-    .pipe(gulp.dest(`./${distDir}/`));
+  return gulp.src(["../../README.md", "../../README_zh-CN.md", "../../LICENSE.txt"], { allowEmpty: true }).pipe(gulp.dest(`./${distDir}/`));
 }
 
 function generatePackageJSON() {
   return gulp
-    .src('./package.json')
+    .src("./package.json")
     .pipe(
       through.obj((file, enc, cb) => {
         const rawJSON = file.contents.toString();
@@ -107,9 +105,9 @@ function generatePackageJSON() {
         delete parsed.publishConfig;
         delete parsed.resolutions;
         delete parsed.packageManager;
-        parsed.main = './cjs/index.js';
-        parsed.module = './es/index.js';
-        parsed.types = './es/index.d.ts';
+        parsed.main = "./cjs/index.js";
+        parsed.module = "./es/index.js";
+        parsed.types = "./es/index.d.ts";
 
         const stringified = JSON.stringify(parsed, null, 2);
 
@@ -120,10 +118,4 @@ function generatePackageJSON() {
     .pipe(gulp.dest(`./${distDir}/`));
 }
 
-exports.default = gulp.series(
-  buildES,
-  buildCJS,
-  gulp.parallel(buildDeclaration),
-  copyMetaFiles,
-  generatePackageJSON,
-);
+exports.default = gulp.series(buildES, buildCJS, gulp.parallel(buildDeclaration), copyMetaFiles, generatePackageJSON);

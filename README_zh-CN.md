@@ -14,15 +14,15 @@ npm install --save react-clipboardjs-copy
 
 ## 配置
 
-| 属性 | 描述 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| action | 命令（`cut` 或 `copy`），对应于 clipboard.js 属性 data-clipboard-action。 | `cut` \| `copy` | `copy` |
-| target | React 组件将复制目标元素内容。 对应于`clipboard.js`属性`data-clipboard-target`。 | string \| function(elem: Element): Element | - |
-| text | React 组件将复制内容。 对应`clipboard.js`属性`data-clipboard-text` | string \| function(elem: Element): string |  |
-| container | 为了在任何其他改变焦点的库中使用，您需要将焦点元素设置为容器值。 | Element | `body` |
-| selection | 设置是否清除所选的副本或剪切 | boolean | false |
-| onSuccess | 操作成功回调 | function(event?: ClipboardJS.Event): void | - |
-| onError | 操作错误回调 | function(event?: ClipboardJS.Event): void | - |
+| 属性      | 描述                                                                             | 类型                                       | 默认值 |
+| --------- | -------------------------------------------------------------------------------- | ------------------------------------------ | ------ |
+| action    | 命令（`cut` 或 `copy`），对应于 clipboard.js 属性 data-clipboard-action。        | `cut` \| `copy`                            | `copy` |
+| target    | React 组件将复制目标元素内容。 对应于`clipboard.js`属性`data-clipboard-target`。 | string \| function(elem: Element): Element | -      |
+| text      | React 组件将复制内容。 对应`clipboard.js`属性`data-clipboard-text`               | string \| function(elem: Element): string  |        |
+| container | 为了在任何其他改变焦点的库中使用，您需要将焦点元素设置为容器值。                 | Element                                    | `body` |
+| selection | 设置是否清除所选的副本或剪切                                                     | boolean                                    | false  |
+| onSuccess | 操作成功回调                                                                     | function(event?: ClipboardJS.Event): void  | -      |
+| onError   | 操作错误回调                                                                     | function(event?: ClipboardJS.Event): void  | -      |
 
 ## 参考资料
 

@@ -1,9 +1,9 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import ReactClipboard from '../src';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import ReactClipboard from "../src";
 
-test('renders learn click ReactClipboard component', async () => {
+test("renders learn click ReactClipboard component", async () => {
   const handleClick = jest.fn();
   render(
     <ReactClipboard text="copy text">
@@ -14,11 +14,11 @@ test('renders learn click ReactClipboard component', async () => {
   expect(handleClick).toHaveBeenCalledTimes(1);
 });
 
-test('component copy text', async () => {
+test("component copy text", async () => {
   const user = userEvent.setup();
   const handleClick = jest.fn();
 
-  const copyText = 'copy text';
+  const copyText = "copy text";
 
   await render(
     <ReactClipboard
@@ -27,15 +27,14 @@ test('component copy text', async () => {
         expect(e?.text).toBe(copyText);
       }}
       onError={() => {
-        expect('fail').toBe('fail');
-      }}
-    >
+        expect("fail").toBe("fail");
+      }}>
       <button onClick={handleClick} data-testid="button">
         Copy Text
       </button>
     </ReactClipboard>,
   );
-  const copyButton = screen.getByTestId('button');
+  const copyButton = screen.getByTestId("button");
 
   await user.click(copyButton);
   // await navigator.clipboard.writeText('copy text');
@@ -43,11 +42,11 @@ test('component copy text', async () => {
   // expect(clipboardText).toBe('copy text');
 });
 
-test('component cut text', async () => {
+test("component cut text", async () => {
   const user = userEvent.setup();
   const handleClick = jest.fn();
 
-  const cutText = 'this is textarea';
+  const cutText = "this is textarea";
 
   await render(
     <section className="app-item">
@@ -62,16 +61,15 @@ test('component cut text', async () => {
           expect(e?.text).toBe(cutText);
         }}
         onError={() => {
-          expect('fail').toBe('fail');
-        }}
-      >
+          expect("fail").toBe("fail");
+        }}>
         <button onClick={handleClick} data-testid="button">
           Cut
         </button>
       </ReactClipboard>
     </section>,
   );
-  const copyButton = screen.getByTestId('button');
+  const copyButton = screen.getByTestId("button");
 
   await user.click(copyButton);
 });
