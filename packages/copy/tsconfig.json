@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "outDir": "./lib",
     "rootDirs": ["src"],
     "target": "ES6",
