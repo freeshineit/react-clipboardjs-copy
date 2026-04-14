@@ -1,17 +1,16 @@
 {
-  "name": "cra-app",
+  "name": "cra-app-react17",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^17.0.11",
-    "react": "^18.2.0",
-    "react-clipboardjs-copy": "^2.1.0",
-    "react-dom": "^18.2.0",
-    "@skax/react-scripts": "5.0.1-beta.2",
-    "typescript": "^5.3.3",
-    "web-vitals": "^2.1.0"
+    "@types/react": "^17",
+    "@types/react-dom": "^17",
+    "react": "^17",
+    "react-dom": "^17",
+    "react-clipboardjs-copy": "workspace:*",
+    "react-scripts": "^4",
+    "typescript": "^5.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
