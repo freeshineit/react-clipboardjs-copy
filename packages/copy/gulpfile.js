@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const gulp = require("gulp");
 const babel = require("gulp-babel");
 const ts = require("gulp-typescript");
-const through = require("through2");
+// const through = require("through2");
 const tsconfig = require("./tsconfig.json");
 
 const distDir = "dist";
@@ -51,10 +52,9 @@ function buildCJS() {
 }
 
 function buildES() {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const tsProject = ts({
     ...tsconfig.compilerOptions,
-    module: "ES6",
+    module: "ES7",
     isolatedModules: false,
   });
   return gulp
@@ -71,7 +71,6 @@ function buildES() {
 }
 
 function buildDeclaration() {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const tsProject = ts({
     ...tsconfig.compilerOptions,
     module: "ES6",
@@ -84,38 +83,37 @@ function buildDeclaration() {
       ignore: ["**/demos/**/*", "**/tests/**/*"],
     })
     .pipe(tsProject)
-    .pipe(gulp.dest(`${distDir}/es/`))
-    .pipe(gulp.dest(`${distDir}/cjs/`));
+    .pipe(gulp.dest(`${distDir}/types/`));
 }
 
 function copyMetaFiles() {
-  return gulp.src(["../../README.md", "../../README_zh-CN.md", "../../LICENSE.txt"], { allowEmpty: true }).pipe(gulp.dest(`./${distDir}/`));
+  return gulp.src(["../../README.md", "../../README_zh-CN.md", "../../LICENSE.txt"], { allowEmpty: true }).pipe(gulp.dest(`./`));
 }
 
-function generatePackageJSON() {
-  return gulp
-    .src("./package.json")
-    .pipe(
-      through.obj((file, enc, cb) => {
-        const rawJSON = file.contents.toString();
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        const parsed = JSON.parse(rawJSON);
-        delete parsed.scripts;
-        delete parsed.devDependencies;
-        delete parsed.publishConfig;
-        delete parsed.resolutions;
-        delete parsed.packageManager;
-        parsed.main = "./cjs/index.js";
-        parsed.module = "./es/index.js";
-        parsed.types = "./es/index.d.ts";
+// function generatePackageJSON() {
+//   return gulp
+//     .src("./package.json")
+//     .pipe(
+//       through.obj((file, enc, cb) => {
+//         const rawJSON = file.contents.toString();
+//         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+//         const parsed = JSON.parse(rawJSON);
+//         delete parsed.scripts;
+//         delete parsed.devDependencies;
+//         delete parsed.publishConfig;
+//         delete parsed.resolutions;
+//         delete parsed.packageManager;
+//         parsed.main = "./cjs/index.js";
+//         parsed.module = "./es/index.js";
+//         parsed.types = "./es/index.d.ts";
 
-        const stringified = JSON.stringify(parsed, null, 2);
+//         const stringified = JSON.stringify(parsed, null, 2);
 
-        file.contents = Buffer.from(stringified);
-        cb(null, file);
-      }),
-    )
-    .pipe(gulp.dest(`./${distDir}/`));
-}
+//         file.contents = Buffer.from(stringified);
+//         cb(null, file);
+//       }),
+//     )
+//     .pipe(gulp.dest(`./${distDir}/`));
+// }
 
-exports.default = gulp.series(buildES, buildCJS, gulp.parallel(buildDeclaration), copyMetaFiles, generatePackageJSON);
+exports.default = gulp.series(buildES, buildCJS, gulp.parallel(buildDeclaration), copyMetaFiles);

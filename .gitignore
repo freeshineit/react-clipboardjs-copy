@@ -9,6 +9,10 @@ lib/
 report/
 coverage/
 
+packages/copy/LICENSE.txt
+packages/copy/README.md
+packages/copy/README_zh-CN.md
+
 packages/*/lib
 
 # misc

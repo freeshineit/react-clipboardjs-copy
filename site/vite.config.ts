@@ -1,8 +1,6 @@
 import { defineConfig, type UserConfig, type ConfigEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import eslint from "vite-plugin-eslint";
 import postcssPreset from "postcss-preset-env";
-import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(((env: ConfigEnv) => {
@@ -14,9 +12,9 @@ export default defineConfig(((env: ConfigEnv) => {
       // port: 3000, // 设置端口号
     },
     resolve: {
-      alias: {
-        "react-clipboardjs-copy": path.resolve(__dirname, "../packages/copy/src"),
-      },
+      // alias: {
+      //   "react-clipboardjs-copy": path.resolve(__dirname, "../packages/copy/dist/es/index.js"),
+      // },
     },
     css: {
       postcss: {
@@ -47,6 +45,6 @@ export default defineConfig(((env: ConfigEnv) => {
       },
     },
     define: {},
-    plugins: [react(), isDev ? eslint() : undefined].filter(Boolean),
+    plugins: [react()].filter(Boolean),
   };
 }) as UserConfig);

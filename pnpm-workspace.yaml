@@ -1,5 +1,5 @@
 packages:
-  - "packages/copy/dist"
+  - "packages/copy"
   - "site"
   - "examples/*"
   - "!**/test/**"
