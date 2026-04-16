@@ -3,7 +3,7 @@
     "ignoreDeprecations": "5.0",
     "outDir": "./lib",
     "rootDirs": ["src"],
-    "target": "ES6",
+    "target": "es2015",
     "module": "esnext",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
@@ -11,9 +11,7 @@
     "declaration": false,
     "esModuleInterop": true,
     "importHelpers": true,
-    "downlevelIteration": true,
     "sourceMap": true,
-    "baseUrl": "./",
     "typeRoots": ["./src/typings", "./node_modules/@types"],
     "lib": ["ES2016", "DOM"],
     "allowSyntheticDefaultImports": true,
@@ -21,10 +19,7 @@
     "strict": true,
     "noImplicitAny": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "paths": {
-      "react-clipboardjs-copy": ["src/index.ts"]
-    }
+    "isolatedModules": true
   },
   "include": ["src", "jest.setup.ts", "jest.config.ts"],
   "exclude": ["node_modules", "lib", "es", "dist"]

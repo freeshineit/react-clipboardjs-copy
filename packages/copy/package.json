@@ -1,15 +1,21 @@
 {
   "name": "react-clipboardjs-copy",
-  "version": "2.1.0",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/es/index.js",
+  "version": "3.0.0-beta.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "repository": "git@github.com:freeshineit/react-clipboardjs-copy.git",
   "author": "ShineShao <xiaoshaoqq@gmail.com>",
   "license": "MIT",
   "description": "clipboard.js copy component for react",
   "keywords": ["react", "react-component", "clipboard", "copy", "cut", "react-clipboardjs-copy"],
-  "files": ["cjs", "es", "LICENSE", "README.md", "README_zh-CN.md"],
+  "files": ["cjs", "es", "LICENSE", "README.md", "README_zh-CN.md", "!dist/**/*.map"],
   "bugs": {
     "url": "https://github.com/freeshineit/react-clipboardjs-copy/issues"
   },
@@ -18,10 +24,14 @@
     "clipboard": "2.0.11"
   },
   "scripts": {
-    "build": "rimraf dist && gulp",
-    "test:watch": "jest --watch",
+    "dev": "cross-env NODE_ENV=development REACT_ENV=react rollup --config rollup.config.mjs --watch",
+    "build": "npm run clean && cross-env NODE_ENV=production REACT_ENV=react rollup --config rollup.config.mjs",
+    "clean": "rimraf dist",
     "test": "jest",
     "test:coverage": "jest --silent --watchAll=false --coverage"
+  },
+  "devDependencies": {
+    "@config/rollup": "workspace:*"
   },
   "engines": {
     "react": ">=16.8"

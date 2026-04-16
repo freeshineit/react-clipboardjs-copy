@@ -1,5 +1,5 @@
-import "./Page.scss";
-import { useCallback } from "react";
+// import "./Page.scss";
+import React, { useCallback } from "react";
 import ReactClipboard from "react-clipboardjs-copy";
 
 function Page() {

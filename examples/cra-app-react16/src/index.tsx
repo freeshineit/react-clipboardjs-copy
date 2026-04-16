@@ -1,6 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { render } from "react-dom";
 import Page from "./Page";
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
-root.render(<Page />);
+const container = document.getElementById("app");
+render(<Page />, container);

@@ -2,5 +2,6 @@ packages:
   - "packages/copy"
   - "site"
   - "examples/*"
+  - "config/*"
   - "!**/test/**"
   - "!**/dist/**"

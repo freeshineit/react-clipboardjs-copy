@@ -1,0 +1,41 @@
+{
+  "name": "@config/rollup",
+  "version": "0.0.0",
+  "main": "src/index.mjs",
+  "types": "src/index.mjs",
+  "module": "src/index.mjs",
+  "type": "module",
+  "scripts": {
+    "dev": "",
+    "build": ""
+  },
+  "keywords": [],
+  "author": "ShineShao <xiaoshaoqq@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-eslint": "^9.2.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
+    "@rollup/plugin-swc": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@rollup/plugin-alias": "^6.0.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "@skax/camel": "^0.2.6",
+    "@swc/core": "^1.15.7",
+    "dayjs": "^1.11.13",
+    "rollup": "^4.54.0",
+    "rollup-plugin-dts": "^6.3.0",
+    "rollup-plugin-serve": "^2.0.3",
+    "rollup-plugin-postcss": "^4.0.2",
+    "typescript": "5.3.3",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.1.2",
+    "postcss": "^8.5.6",
+    "sass": "^1.97.1"
+  }
+}
