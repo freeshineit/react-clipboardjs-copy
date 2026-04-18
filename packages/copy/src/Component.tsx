@@ -60,8 +60,8 @@ export { ClipboardJS };
  * ```
  */
 export function ReactClipboard(props: ReactClipboardProps): React.ReactElement | null {
-  const childrenRef = React.useRef<Element>(null);
-  const clipboard = React.useRef<ClipboardJS>(null);
+  const childrenRef = React.useRef<Element | null>(null);
+  const clipboard = React.useRef<ClipboardJS | null>(null);
 
   React.useEffect(() => {
     // ⚠️： useEffect Run Twice in React v18.0 https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93
@@ -69,7 +69,7 @@ export function ReactClipboard(props: ReactClipboardProps): React.ReactElement |
     // https://github.com/facebook/react/issues/24502
     if (!clipboard.current && childrenRef.current) {
       clipboard.current = new ClipboardJS(childrenRef.current, {
-        action: typeof props.action === "function" ? props.action || "copy" : undefined,
+        action: typeof props.action === "function" ? props.action : undefined,
         target: typeof props.target === "function" ? props.target : undefined,
         text: typeof props.text === "function" ? props.text : undefined,
         container: props.container,
@@ -107,7 +107,9 @@ export function ReactClipboard(props: ReactClipboardProps): React.ReactElement |
     return null;
   }
 
-  return React.cloneElement(props.children, {
+  const child = React.Children.only(props.children);
+
+  return React.cloneElement(child, {
     "data-clipboard-action": typeof props.action === "string" ? props.action || "copy" : undefined,
     "data-clipboard-text": typeof props.text === "string" ? props.text : undefined,
     "data-clipboard-target": typeof props.target === "string" ? props.target : undefined,
