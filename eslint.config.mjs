@@ -9,7 +9,7 @@ export default defineConfig([
   globalIgnores(["dist", "build"]),
   ...configs,
   {
-    files: ["examples/cra-app-react16/src/index.tsx"],
+    files: ["examples/**/*.tsx"],
     rules: {
       "react/no-deprecated": "off",
     },
