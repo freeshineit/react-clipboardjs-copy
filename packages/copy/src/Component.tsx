@@ -1,15 +1,22 @@
 import React from "react";
 import ClipboardJS from "clipboard";
 
+/** Supported target shapes accepted by clipboard.js target resolution. */
 export type ClipboardJSTarget = string | Element | NodeListOf<Element>;
 
+/** Internal props injected into the single child element rendered by ReactClipboard. */
 export interface ClipboardChildProps {
+  /** Injected clipboard action passed through clipboard.js data attributes. */
   "data-clipboard-action"?: string;
+  /** Injected clipboard text passed through clipboard.js data attributes. */
   "data-clipboard-text"?: string;
+  /** Injected clipboard target selector passed through clipboard.js data attributes. */
   "data-clipboard-target"?: string;
+  /** Ref used internally to bind clipboard.js to the rendered trigger element. */
   ref?: React.Ref<Element>;
 }
 
+/** Public props for the ReactClipboard component. */
 export interface ReactClipboardProps {
   /**
    * Overwrites default command ('cut' or 'copy').
@@ -29,6 +36,9 @@ export interface ReactClipboardProps {
   container?: ClipboardJS.Options["container"];
   /** Setting whether to clear the copy or cut selected, default为false */
   selection?: boolean; // default true
+  /**
+   * Only one child (a React element) is supported. The child element must be able to hold a ref, and will be used as the trigger for clipboard actions.
+   */
   children: React.ReactElement<ClipboardChildProps>;
 
   /** success operation callback */
@@ -39,6 +49,16 @@ export interface ReactClipboardProps {
 
 export { ClipboardJS };
 
+/**
+ * Clipboard.js wrapper component for React.
+ *
+ * @example
+ * ```tsx
+ * <ReactClipboard text="copy text" onSuccess={(event) => console.log(event)}>
+ *   <button>Copy Text</button>
+ * </ReactClipboard>
+ * ```
+ */
 export function ReactClipboard(props: ReactClipboardProps): React.ReactElement | null {
   const childrenRef = React.useRef<Element>(null);
   const clipboard = React.useRef<ClipboardJS>(null);
@@ -81,6 +101,7 @@ export function ReactClipboard(props: ReactClipboardProps): React.ReactElement |
   }, [props]);
 
   // 用来约束子组件的个数
+  // Only one child is supported
   if (!React.Children.only(props.children)) {
     console.error("Only one child is supported");
     return null;
