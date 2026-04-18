@@ -3,6 +3,13 @@ import ClipboardJS from "clipboard";
 
 export type ClipboardJSTarget = string | Element | NodeListOf<Element>;
 
+export interface ClipboardChildProps {
+  "data-clipboard-action"?: string;
+  "data-clipboard-text"?: string;
+  "data-clipboard-target"?: string;
+  ref?: React.Ref<Element>;
+}
+
 export interface ReactClipboardProps {
   /**
    * Overwrites default command ('cut' or 'copy').
@@ -22,7 +29,7 @@ export interface ReactClipboardProps {
   container?: ClipboardJS.Options["container"];
   /** Setting whether to clear the copy or cut selected, default为false */
   selection?: boolean; // default true
-  children: React.ReactElement;
+  children: React.ReactElement<ClipboardChildProps>;
 
   /** success operation callback */
   onSuccess?: (event?: ClipboardJS.Event) => void;
