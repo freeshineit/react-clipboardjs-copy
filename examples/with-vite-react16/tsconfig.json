@@ -17,7 +17,7 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "include": ["src/**/*", "typings", "tsconfig.node.json", "../../../site/src"],
+  "include": ["src/**/*", "typings", "tsconfig.node.json"],
   "exclude": ["node_modules", "dist", "coverage"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
