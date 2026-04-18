@@ -1,4 +1,4 @@
-name: build-examples
+name: build-examples-old
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 21.x, 22.x, 23.x, 24.x, 25.x] # bfj@8.0.0: The engine "node" is incompatible with this module. Expected version ">= 18.0.0".
+        node-version: [12.x, 14.x, 16.x] # bfj@8.0.0: The engine "node" is incompatible with this module. Expected version ">= 18.0.0".
 
     steps:
       - uses: actions/checkout@v6
@@ -23,7 +23,7 @@ jobs:
 
       - uses: pnpm/action-setup@v5
         with:
-          version: 8
+          version: 7
 
       - name: Pnpm install
         run: pnpm install
@@ -35,21 +35,14 @@ jobs:
         env:
           CI: false
 
-      # - name: Build ./examples/cra-app-react16
-      #   working-directory: ./examples/cra-app-react16
-      #   run: |
-      #     pnpm run build
-      #   env:
-      #     CI: false
-
-      - name: Build ./examples/cra-app-react18
-        working-directory: ./examples/cra-app-react18
+      - name: Build ./examples/cra-app-react16
+        working-directory: ./examples/cra-app-react16
         run: |
           pnpm run build
         env:
           CI: false
-      - name: Build ./examples/cra-app-react19
-        working-directory: ./examples/cra-app-react19
+      - name: Build ./examples/cra-app-react16
+        working-directory: ./examples/cra-app-react17
         run: |
           pnpm run build
         env:
