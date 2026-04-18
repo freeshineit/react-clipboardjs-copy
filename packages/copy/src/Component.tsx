@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import ClipboardJS from "clipboard";
 
 export type ClipboardJSTarget = string | Element | NodeListOf<Element>;
@@ -40,10 +40,10 @@ export interface ReactClipboardProps {
 export { ClipboardJS };
 
 export function ReactClipboard(props: ReactClipboardProps): React.ReactElement | null {
-  const childrenRef = useRef<Element>(null);
-  const clipboard = useRef<ClipboardJS>(null);
+  const childrenRef = React.useRef<Element>(null);
+  const clipboard = React.useRef<ClipboardJS>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // ⚠️： useEffect Run Twice in React v18.0 https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93
     // https://reactjs.org/docs/strict-mode.html#ensuring-reusable-state
     // https://github.com/facebook/react/issues/24502
