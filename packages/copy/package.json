@@ -2,12 +2,19 @@
   "name": "react-clipboardjs-copy",
   "version": "3.0.0-beta.1",
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": "./dist/index.mjs"
     }
   },
   "repository": "git@github.com:freeshineit/react-clipboardjs-copy.git",

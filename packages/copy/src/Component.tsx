@@ -32,9 +32,9 @@ export interface ReactClipboardProps {
 
 export { ClipboardJS };
 
-export const ReactClipboard: React.FC<ReactClipboardProps> = (props) => {
-  const childrenRef = useRef<Element>();
-  const clipboard = useRef<ClipboardJS>();
+export function ReactClipboard(props: ReactClipboardProps): React.ReactElement | null {
+  const childrenRef = useRef<Element>(null);
+  const clipboard = useRef<ClipboardJS>(null);
 
   useEffect(() => {
     // ⚠️： useEffect Run Twice in React v18.0 https://blog.bitsrc.io/react-v18-0-useeffect-bug-why-do-effects-run-twice-39babecede93
@@ -85,4 +85,4 @@ export const ReactClipboard: React.FC<ReactClipboardProps> = (props) => {
     "data-clipboard-target": typeof props.target === "string" ? props.target : undefined,
     ref: childrenRef,
   });
-};
+}

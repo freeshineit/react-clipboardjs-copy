@@ -1,4 +1,5 @@
-// import "./Page.scss";
+/* eslint-disable react/no-unescaped-entities */
+import "./Page.scss";
 import React, { useCallback } from "react";
 import ReactClipboard from "react-clipboardjs-copy";
 
