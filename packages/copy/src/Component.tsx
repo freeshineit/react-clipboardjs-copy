@@ -39,7 +39,7 @@ export interface ReactClipboardProps {
   /**
    * Only one child (a React element) is supported. The child element must be able to hold a ref, and will be used as the trigger for clipboard actions.
    */
-  children: React.ReactElement<ClipboardChildProps>;
+  children?: React.ReactElement<ClipboardChildProps>;
 
   /** success operation callback */
   onSuccess?: (event?: ClipboardJS.Event) => void;
