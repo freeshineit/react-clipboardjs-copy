@@ -20,7 +20,7 @@
   "homepage": "https://freeshineit.github.io/react-clipboardjs-copy",
   "scripts": {
     "dev": "pnpm run --filter site dev",
-    "build": "pnpm run --filter react-clipboardjs-copy build && npm run docs",
+    "build": "pnpm run --filter react-clipboardjs-copy build",
     "docs": "rimraf docs && pnpm run --filter site build",
     "build:examples": "pnpm run --filter \\ test",
     "test": "pnpm run --filter react-clipboardjs-copy test",
