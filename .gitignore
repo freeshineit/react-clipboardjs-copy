@@ -8,6 +8,7 @@ dist/
 lib/
 report/
 coverage/
+docs/
 
 packages/copy/LICENSE.txt
 packages/copy/README.md
