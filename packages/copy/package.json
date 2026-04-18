@@ -42,11 +42,5 @@
   },
   "engines": {
     "react": ">=16.8"
-  },
-  "peerDependencies": {
-    "react": ">=16.8",
-    "react-dom": ">=16.8",
-    "@types/react": ">=16.8",
-    "@types/react-dom": ">=16.8"
   }
 }
