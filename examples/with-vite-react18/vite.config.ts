@@ -1,4 +1,4 @@
-import { defineConfig, type UserConfig, type ConfigEnv } from "vite";
+import { defineConfig, type UserConfig, type ConfigEnv } from "vitest/config";
 import react from "@vitejs/plugin-react-swc";
 import postcssPreset from "postcss-preset-env";
 
@@ -36,6 +36,11 @@ export default defineConfig(((env: ConfigEnv) => {
       //     drop_debugger: true,
       //   },
       // },
+    },
+    test: {
+      environment: "jsdom",
+      setupFiles: "./src/test/setup.ts",
+      css: true,
     },
     define: {},
     plugins: [react()].filter(Boolean),

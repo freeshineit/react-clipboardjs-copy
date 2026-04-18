@@ -7,15 +7,23 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "react": "^19.2.5",
-    "react-dom": "^19.2.5",
     "react-clipboardjs-copy": "workspace:*",
+    "react-dom": "^19.2.5",
     "react-scripts": "^5",
     "typescript": "^5.9"
+  },
+  "dependenciesMeta": {
+    "react-clipboardjs-copy": {
+      "injected": true
+    }
   },
   "scripts": {
     "dev": "react-scripts start",
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "react-scripts test --watchAll=false --runInBand src/__tests__/ReactClipboard.unit.test.tsx",
+    "test:integration": "react-scripts test --watchAll=false --runInBand src/__tests__/Page.integration.test.tsx"
   },
   "browserslist": {
     "production": [
@@ -30,6 +38,12 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^29.5.12",
+    "clipboard": "2.0.11",
+    "jest-environment-jsdom": "^27.5.1",
     "sass": "^1.77.4"
   }
 }
