@@ -41,6 +41,7 @@ jobs:
           pnpm run build
         env:
           CI: false
+
       - name: Build ./examples/cra-app-react16
         working-directory: ./examples/cra-app-react17
         run: |
