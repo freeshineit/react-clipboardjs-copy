@@ -29,6 +29,12 @@
   "devDependencies": {
     "@vitejs/plugin-react-swc": "^3.6.0",
     "vite": "^5.2.8",
-    "react-clipboardjs-copy": "workspace:*"
+    "react-clipboardjs-copy": "workspace:*",
+    "@types/node": "^16.7.13",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "typescript": "^5.9"
   }
 }
