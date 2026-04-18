@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x] # bfj@8.0.0: The engine "node" is incompatible with this module. Expected version ">= 18.0.0".
+        node-version: [14.x, 16.x] # The engine "node" is incompatible with this module. Expected version ">= 14.6".
 
     steps:
       - uses: actions/checkout@v6
