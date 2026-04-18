@@ -1,1 +1,3 @@
-/// <reference types="@skax/react-scripts" />
+/// <reference types="react-scripts" />
+
+declare module "*.scss";
