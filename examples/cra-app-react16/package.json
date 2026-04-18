@@ -11,11 +11,11 @@
     "react-dom": "^16",
     "react-scripts": "^3",
     "typescript": "^3",
-    "web-vitals": "^2.1.4",
     "react-clipboardjs-copy": "workspace:*"
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "sass": "^1.77.4"
   },
   "scripts": {
     "dev": "react-scripts start",
