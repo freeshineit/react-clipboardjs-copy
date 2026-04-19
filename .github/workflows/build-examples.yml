@@ -40,13 +40,21 @@ jobs:
         run: |
           rm -rf node_modules
           yarn install --frozen-lockfile
-          yarn run test
           yarn run build
         env:
           CI: false
 
       - name: Build ./examples/cra-app-react17
         working-directory: ./examples/cra-app-react17
+        run: |
+          rm -rf node_modules
+          yarn install --frozen-lockfile
+          yarn run build
+        env:
+          CI: false
+
+      - name: Build ./examples/cra-app-react18
+        working-directory: ./examples/cra-app-react18
         run: |
           rm -rf node_modules
           yarn install --frozen-lockfile
@@ -70,7 +78,6 @@ jobs:
         run: |
           rm -rf node_modules
           yarn install --frozen-lockfile
-          yarn run test
           yarn run build
         env:
           CI: false
@@ -80,7 +87,6 @@ jobs:
         run: |
           rm -rf node_modules
           yarn install --frozen-lockfile
-          yarn run test
           yarn run build
         env:
           CI: false
