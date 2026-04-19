@@ -1,0 +1,104 @@
+# 整个流程的名字
+name: Release
+# 触发时机，在 tag 被 push 操作触发
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
+# 任务，定义个changelog 的任务
+jobs:
+  changelog:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      # 设置 Node
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+      - run: npm install -g npm@latest
+
+      # 设置 pnpm
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v5
+        with:
+          version: 8
+
+      # 安装依赖
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build project
+        run: pnpm run build
+
+      - name: Build copy
+        working-directory: ./packages/copy
+        run: |
+          pnpm run build
+        env:
+          CI: false
+
+      - name: Check file versions
+        run: |
+          files="dist/index.js dist/index.mjs package.json"
+
+          version=""
+          inconsistent=false
+
+          for file in $files; do
+            if [ ! -f "$file" ]; then
+              echo "缺少文件: $file"
+              inconsistent=true
+              continue
+            fi
+            v=$(head -4 "$file" | grep -Eo '([0-9]+\.[0-9]+\.[0-9]+)+(-[a-z]+\.[0-9]+)?')
+            if [ -z "$v" ]; then
+              echo "文件 $file 未检测到版本号"
+              inconsistent=true
+              continue
+            fi
+            if [ -z "$version" ]; then
+              version="$v"
+            else
+              if [ "$version" != "$v" ]; then
+                echo "文件 $file 的版本号 $v 与其它文件版本号 $version 不一致"
+                inconsistent=true
+              fi
+            fi
+          done
+
+          if [ "$inconsistent" = true ]; then
+            echo "版本号不一致，禁止推送！"
+            exit 1
+          fi
+
+          echo "所有文件版本号一致: $version"
+
+      # 获取 tag 的版本类型（仅支持 正式版、alpha和beta版）
+      - name: Determine release tag
+        id: determine_tag
+        run: |
+          TAG=$(echo "${GITHUB_REF}" | sed 's/refs\/tags\/\(.*\)/\1/')
+          if [[ "$TAG" =~ -alpha ]]; then
+            echo "tag=alpha" >> "$GITHUB_OUTPUT"
+          elif [[ "$TAG" =~ -beta ]]; then
+            echo "tag=beta" >> "$GITHUB_OUTPUT"
+          elif [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "tag=latest" >> "$GITHUB_OUTPUT"
+          else
+            echo "Unsupported version detected. Terminating."
+            exit 1
+          fi
+      # # 打包
+      # - name: Build Packages
+      #   run: pnpm run build
+      # 发布npm 发布前执行了prepublishOnly
+      - name: Publish npm
+        run: npm publish --tag ${{ steps.determine_tag.outputs.tag }} --access public
