@@ -17,7 +17,6 @@
       "default": "./dist/index.mjs"
     }
   },
-  "repository": "git@github.com:freeshineit/react-clipboardjs-copy.git",
   "author": "ShineShao <xiaoshaoqq@gmail.com>",
   "license": "MIT",
   "description": "clipboard.js copy component for react",
@@ -40,5 +39,13 @@
   },
   "engines": {
     "react": ">=16.8"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:freeshineit/react-clipboardjs-copy.git"
   }
 }
