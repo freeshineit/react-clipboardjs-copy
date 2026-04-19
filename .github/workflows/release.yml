@@ -46,6 +46,7 @@ jobs:
           CI: false
 
       - name: Check file versions
+        working-directory: ./packages/copy
         run: |
           files="dist/index.js dist/index.mjs package.json"
 
@@ -84,6 +85,7 @@ jobs:
       # 获取 tag 的版本类型（仅支持 正式版、alpha和beta版）
       - name: Determine release tag
         id: determine_tag
+        working-directory: ./packages/copy
         run: |
           TAG=$(echo "${GITHUB_REF}" | sed 's/refs\/tags\/\(.*\)/\1/')
           if [[ "$TAG" =~ -alpha ]]; then
@@ -101,4 +103,5 @@ jobs:
       #   run: pnpm run build
       # 发布npm 发布前执行了prepublishOnly
       - name: Publish npm
+        working-directory: ./packages/copy
         run: npm publish --tag ${{ steps.determine_tag.outputs.tag }} --access public
