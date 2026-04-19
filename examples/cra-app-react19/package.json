@@ -1,5 +1,5 @@
 {
-  "name": "with-vite-react16",
+  "name": "cra-app-react19",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,7 +7,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "react": "^19.2.5",
-    "react-clipboardjs-copy": "workspace:*",
+    "react-clipboardjs-copy": "3.0.0-beta.1",
     "react-dom": "^19.2.5",
     "react-scripts": "^5",
     "typescript": "^5.9"
