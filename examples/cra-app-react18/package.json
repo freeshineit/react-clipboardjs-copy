@@ -12,11 +12,6 @@
     "react-scripts": "^5.0.1",
     "typescript": "^5.3.3"
   },
-  "dependenciesMeta": {
-    "react-clipboardjs-copy": {
-      "injected": true
-    }
-  },
   "scripts": {
     "dev": "react-scripts start",
     "start": "react-scripts start",

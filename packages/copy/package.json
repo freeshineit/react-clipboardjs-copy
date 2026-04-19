@@ -37,9 +37,6 @@
   "devDependencies": {
     "@config/rollup": "workspace:*"
   },
-  "engines": {
-    "react": ">=16.8"
-  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
