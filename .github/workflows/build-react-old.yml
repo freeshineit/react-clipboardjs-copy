@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x] # The engine "node" is incompatible with this module. Expected version ">=16".
+        node-version: [18.x] # The engine "node" is incompatible with this module. Expected version ">=16".
 
     steps:
       - uses: actions/checkout@v6
