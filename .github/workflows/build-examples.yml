@@ -45,31 +45,35 @@ jobs:
       - name: Build ./examples/cra-app-react18
         working-directory: ./examples/cra-app-react18
         run: |
-          pnpm run test
-          pnpm run build
+          yarn install
+          yarn run test
+          yarn run build
         env:
           CI: false
 
       - name: Build ./examples/cra-app-react19
         working-directory: ./examples/cra-app-react19
         run: |
-          pnpm run test
-          pnpm run build
+          yarn install
+          yarn run test
+          yarn run build
         env:
           CI: false
 
       - name: Build ./examples/with-vite-react18
         working-directory: ./examples/with-vite-react18
         run: |
-          pnpm run test
-          pnpm run build
+          yarn install
+          yarn run test
+          yarn run build
         env:
           CI: false
 
       - name: Build ./examples/with-vite-react19
         working-directory: ./examples/with-vite-react19
         run: |
-          pnpm run test
-          pnpm run build
+          yarn install
+          yarn run test
+          yarn run build
         env:
           CI: false
