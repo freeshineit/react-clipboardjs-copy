@@ -38,7 +38,8 @@ jobs:
       - name: Build ./examples/cra-app-react16
         working-directory: ./examples/cra-app-react16
         run: |
-          yarn install
+          rm -rf node_modules
+          yarn install --frozen-lockfile
           yarn run build
         env:
           CI: false
@@ -46,7 +47,8 @@ jobs:
       - name: Build ./examples/cra-app-react16
         working-directory: ./examples/cra-app-react17
         run: |
-          yarn install
+          rm -rf node_modules
+          yarn install --frozen-lockfile
           yarn run build
         env:
           CI: false
